@@ -14,6 +14,8 @@
 		BB5A451721035CB100C1D6C1 /* UITableView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB5A451521035CB100C1D6C1 /* UITableView.m */; };
 		BB5A451A2103625400C1D6C1 /* UIImagePickerController.h in Headers */ = {isa = PBXBuildFile; fileRef = BB5A45182103625400C1D6C1 /* UIImagePickerController.h */; };
 		BB5A451B2103625400C1D6C1 /* UIImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB5A45192103625400C1D6C1 /* UIImagePickerController.m */; };
+		BBCCA57B210387FD0040B531 /* UIViewController+pri.h in Headers */ = {isa = PBXBuildFile; fileRef = BBCCA579210387FD0040B531 /* UIViewController+pri.h */; };
+		BBCCA57C210387FD0040B531 /* UIViewController+pri.m in Sources */ = {isa = PBXBuildFile; fileRef = BBCCA57A210387FD0040B531 /* UIViewController+pri.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +29,8 @@
 		BB5A451521035CB100C1D6C1 /* UITableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UITableView.m; sourceTree = "<group>"; };
 		BB5A45182103625400C1D6C1 /* UIImagePickerController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIImagePickerController.h; sourceTree = "<group>"; };
 		BB5A45192103625400C1D6C1 /* UIImagePickerController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIImagePickerController.m; sourceTree = "<group>"; };
+		BBCCA579210387FD0040B531 /* UIViewController+pri.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+pri.h"; sourceTree = "<group>"; };
+		BBCCA57A210387FD0040B531 /* UIViewController+pri.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+pri.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +96,8 @@
 			children = (
 				BB354782210355F500B97505 /* UITableViewSection.h */,
 				BB354783210355F500B97505 /* UITableViewSection.m */,
+				BBCCA579210387FD0040B531 /* UIViewController+pri.h */,
+				BBCCA57A210387FD0040B531 /* UIViewController+pri.m */,
 			);
 			path = "Private Class";
 			sourceTree = "<group>";
@@ -111,6 +117,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBCCA57B210387FD0040B531 /* UIViewController+pri.h in Headers */,
 				BB354784210355F500B97505 /* UITableViewSection.h in Headers */,
 				BB5A451621035CB100C1D6C1 /* UITableView.h in Headers */,
 				BB5A451A2103625400C1D6C1 /* UIImagePickerController.h in Headers */,
@@ -186,6 +193,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBCCA57C210387FD0040B531 /* UIViewController+pri.m in Sources */,
 				BB354785210355F500B97505 /* UITableViewSection.m in Sources */,
 				BB5A451721035CB100C1D6C1 /* UITableView.m in Sources */,
 				BB5A451B2103625400C1D6C1 /* UIImagePickerController.m in Sources */,

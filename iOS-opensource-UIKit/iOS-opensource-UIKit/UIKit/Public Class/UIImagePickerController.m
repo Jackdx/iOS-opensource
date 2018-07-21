@@ -7,12 +7,25 @@
 //
 
 #import "UIImagePickerController.h"
+#import "UIViewController+pri.h"
 Boolean MGGetBoolAnswer(NSString *str)
 {
     return YES;
 }
 @interface DUIImagePickerController ()
-
+{
+    struct {
+        unsigned int visible : 1;
+        unsigned int isCleaningUp : 1;
+        unsigned int savingOptions : 3;
+        unsigned int didRevertStatusBar : 1;
+    } _imagePickerFlags;
+    CGRect _cropRect;
+    UIImage *_image;
+    BOOL _previousStatusBarHidden;
+    int _previousStatusBarStyle;
+    NSMutableDictionary *_properties;
+}
 @end
 
 @implementation DUIImagePickerController
@@ -119,5 +132,40 @@ Boolean MGGetBoolAnswer(NSString *str)
     if (self.mediaTypes) {
         [aCoder encodeObject:self.mediaTypes forKey:@"UIMediaTypes"];
     }
+}
+- (void)takePicture // 未完成
+{
+    if ([self _sourceTypeIsCamera]) {
+        UIImagePickerController *picker = [self _cameraViewController];
+//        [picker _takePicture];
+    }
+}
+// 私有方法
+- (BOOL)_sourceTypeIsCamera
+{
+    if ([self sourceType] == UIImagePickerControllerSourceTypeCamera) {
+        return YES;
+    }
+    else
+    {
+        [NSException exceptionWithName:NSInvalidArgumentException reason:@"Source type must be UIImagePickerControllerSourceTypeCamera" userInfo:nil];
+    }
+    return NO;
+}
+- (UIImagePickerController *)_cameraViewController // 存疑？
+{
+    UIImagePickerController *vc = nil;
+    if ([self _sourceTypeIsCamera]) {
+        NSArray *vcs = [self viewControllers];
+        if (vcs.count) {
+            vc = vcs[0];
+        }
+    }
+    return vc;
+}
+- (void)_populateArchivedChildViewControllers:(id)arg1
+{
+    [super _populateArchivedChildViewControllers:arg1];
+    [arg1 removeAllObjects];
 }
 @end
