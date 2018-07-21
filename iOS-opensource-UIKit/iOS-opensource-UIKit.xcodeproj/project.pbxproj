@@ -8,12 +8,21 @@
 
 /* Begin PBXBuildFile section */
 		BB35474C2103385C00B97505 /* iOS_opensource_UIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = BB35474A2103385C00B97505 /* iOS_opensource_UIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BB354784210355F500B97505 /* UITableViewSection.h in Headers */ = {isa = PBXBuildFile; fileRef = BB354782210355F500B97505 /* UITableViewSection.h */; };
+		BB354785210355F500B97505 /* UITableViewSection.m in Sources */ = {isa = PBXBuildFile; fileRef = BB354783210355F500B97505 /* UITableViewSection.m */; };
+		BB5A451621035CB100C1D6C1 /* UITableView.h in Headers */ = {isa = PBXBuildFile; fileRef = BB5A451421035CB100C1D6C1 /* UITableView.h */; };
+		BB5A451721035CB100C1D6C1 /* UITableView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB5A451521035CB100C1D6C1 /* UITableView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		BB3547472103385C00B97505 /* iOS_opensource_UIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = iOS_opensource_UIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB35474A2103385C00B97505 /* iOS_opensource_UIKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iOS_opensource_UIKit.h; sourceTree = "<group>"; };
 		BB35474B2103385C00B97505 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BB354782210355F500B97505 /* UITableViewSection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UITableViewSection.h; sourceTree = "<group>"; };
+		BB354783210355F500B97505 /* UITableViewSection.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UITableViewSection.m; sourceTree = "<group>"; };
+		BB354787210356B800B97505 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		BB5A451421035CB100C1D6C1 /* UITableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UITableView.h; sourceTree = "<group>"; };
+		BB5A451521035CB100C1D6C1 /* UITableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UITableView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +41,7 @@
 			children = (
 				BB3547492103385C00B97505 /* iOS-opensource-UIKit */,
 				BB3547482103385C00B97505 /* Products */,
+				BB354786210356B800B97505 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -46,10 +56,46 @@
 		BB3547492103385C00B97505 /* iOS-opensource-UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				BB35477F210355AE00B97505 /* UIKit */,
 				BB35474A2103385C00B97505 /* iOS_opensource_UIKit.h */,
 				BB35474B2103385C00B97505 /* Info.plist */,
 			);
 			path = "iOS-opensource-UIKit";
+			sourceTree = "<group>";
+		};
+		BB35477F210355AE00B97505 /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
+				BB354780210355B800B97505 /* Public Class */,
+				BB354781210355D800B97505 /* Private Class */,
+			);
+			path = UIKit;
+			sourceTree = "<group>";
+		};
+		BB354780210355B800B97505 /* Public Class */ = {
+			isa = PBXGroup;
+			children = (
+				BB5A451421035CB100C1D6C1 /* UITableView.h */,
+				BB5A451521035CB100C1D6C1 /* UITableView.m */,
+			);
+			path = "Public Class";
+			sourceTree = "<group>";
+		};
+		BB354781210355D800B97505 /* Private Class */ = {
+			isa = PBXGroup;
+			children = (
+				BB354782210355F500B97505 /* UITableViewSection.h */,
+				BB354783210355F500B97505 /* UITableViewSection.m */,
+			);
+			path = "Private Class";
+			sourceTree = "<group>";
+		};
+		BB354786210356B800B97505 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BB354787210356B800B97505 /* UIKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -59,6 +105,8 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB354784210355F500B97505 /* UITableViewSection.h in Headers */,
+				BB5A451621035CB100C1D6C1 /* UITableView.h in Headers */,
 				BB35474C2103385C00B97505 /* iOS_opensource_UIKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -131,6 +179,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB354785210355F500B97505 /* UITableViewSection.m in Sources */,
+				BB5A451721035CB100C1D6C1 /* UITableView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
