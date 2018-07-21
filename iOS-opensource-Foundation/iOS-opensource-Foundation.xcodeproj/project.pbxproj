@@ -8,12 +8,36 @@
 
 /* Begin PBXBuildFile section */
 		BB3547372103382800B97505 /* iOS_opensource_Foundation.h in Headers */ = {isa = PBXBuildFile; fileRef = BB3547352103382800B97505 /* iOS_opensource_Foundation.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BB3547692103414400B97505 /* NSNotification.h in Headers */ = {isa = PBXBuildFile; fileRef = BB3547672103414400B97505 /* NSNotification.h */; };
+		BB35476A2103414400B97505 /* NSNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3547682103414400B97505 /* NSNotification.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		BB35476D210341B000B97505 /* NSConcreteNotification.h in Headers */ = {isa = PBXBuildFile; fileRef = BB35476B210341B000B97505 /* NSConcreteNotification.h */; };
+		BB35476E210341B000B97505 /* NSConcreteNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = BB35476C210341B000B97505 /* NSConcreteNotification.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		BB3547712103421000B97505 /* __NSObserver.h in Headers */ = {isa = PBXBuildFile; fileRef = BB35476F2103421000B97505 /* __NSObserver.h */; };
+		BB3547722103421000B97505 /* __NSObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3547702103421000B97505 /* __NSObserver.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		BB3547752103425C00B97505 /* NSIndexPath.h in Headers */ = {isa = PBXBuildFile; fileRef = BB3547732103425C00B97505 /* NSIndexPath.h */; };
+		BB3547762103425C00B97505 /* NSIndexPath.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3547742103425C00B97505 /* NSIndexPath.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		BB3547792103428C00B97505 /* NSTimer.h in Headers */ = {isa = PBXBuildFile; fileRef = BB3547772103428C00B97505 /* NSTimer.h */; };
+		BB35477A2103428C00B97505 /* NSTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3547782103428C00B97505 /* NSTimer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		BB35477D210342BF00B97505 /* NSCFTimer.h in Headers */ = {isa = PBXBuildFile; fileRef = BB35477B210342BF00B97505 /* NSCFTimer.h */; };
+		BB35477E210342BF00B97505 /* NSCFTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = BB35477C210342BF00B97505 /* NSCFTimer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		BB3547322103382800B97505 /* iOS_opensource_Foundation.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = iOS_opensource_Foundation.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB3547352103382800B97505 /* iOS_opensource_Foundation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iOS_opensource_Foundation.h; sourceTree = "<group>"; };
 		BB3547362103382800B97505 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BB3547672103414400B97505 /* NSNotification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSNotification.h; sourceTree = "<group>"; };
+		BB3547682103414400B97505 /* NSNotification.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSNotification.m; sourceTree = "<group>"; };
+		BB35476B210341B000B97505 /* NSConcreteNotification.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSConcreteNotification.h; sourceTree = "<group>"; };
+		BB35476C210341B000B97505 /* NSConcreteNotification.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSConcreteNotification.m; sourceTree = "<group>"; };
+		BB35476F2103421000B97505 /* __NSObserver.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = __NSObserver.h; sourceTree = "<group>"; };
+		BB3547702103421000B97505 /* __NSObserver.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = __NSObserver.m; sourceTree = "<group>"; };
+		BB3547732103425C00B97505 /* NSIndexPath.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSIndexPath.h; sourceTree = "<group>"; };
+		BB3547742103425C00B97505 /* NSIndexPath.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSIndexPath.m; sourceTree = "<group>"; };
+		BB3547772103428C00B97505 /* NSTimer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSTimer.h; sourceTree = "<group>"; };
+		BB3547782103428C00B97505 /* NSTimer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSTimer.m; sourceTree = "<group>"; };
+		BB35477B210342BF00B97505 /* NSCFTimer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NSCFTimer.h; sourceTree = "<group>"; };
+		BB35477C210342BF00B97505 /* NSCFTimer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NSCFTimer.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,10 +70,46 @@
 		BB3547342103382800B97505 /* iOS-opensource-Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				BB3547642103411000B97505 /* Foundation */,
 				BB3547352103382800B97505 /* iOS_opensource_Foundation.h */,
 				BB3547362103382800B97505 /* Info.plist */,
 			);
 			path = "iOS-opensource-Foundation";
+			sourceTree = "<group>";
+		};
+		BB3547642103411000B97505 /* Foundation */ = {
+			isa = PBXGroup;
+			children = (
+				BB3547652103411000B97505 /* Public Class */,
+				BB3547662103411000B97505 /* Private Class */,
+			);
+			path = Foundation;
+			sourceTree = "<group>";
+		};
+		BB3547652103411000B97505 /* Public Class */ = {
+			isa = PBXGroup;
+			children = (
+				BB3547672103414400B97505 /* NSNotification.h */,
+				BB3547682103414400B97505 /* NSNotification.m */,
+				BB3547732103425C00B97505 /* NSIndexPath.h */,
+				BB3547742103425C00B97505 /* NSIndexPath.m */,
+				BB3547772103428C00B97505 /* NSTimer.h */,
+				BB3547782103428C00B97505 /* NSTimer.m */,
+			);
+			path = "Public Class";
+			sourceTree = "<group>";
+		};
+		BB3547662103411000B97505 /* Private Class */ = {
+			isa = PBXGroup;
+			children = (
+				BB35476B210341B000B97505 /* NSConcreteNotification.h */,
+				BB35476C210341B000B97505 /* NSConcreteNotification.m */,
+				BB35476F2103421000B97505 /* __NSObserver.h */,
+				BB3547702103421000B97505 /* __NSObserver.m */,
+				BB35477B210342BF00B97505 /* NSCFTimer.h */,
+				BB35477C210342BF00B97505 /* NSCFTimer.m */,
+			);
+			path = "Private Class";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -60,6 +120,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB3547372103382800B97505 /* iOS_opensource_Foundation.h in Headers */,
+				BB35476D210341B000B97505 /* NSConcreteNotification.h in Headers */,
+				BB3547752103425C00B97505 /* NSIndexPath.h in Headers */,
+				BB35477D210342BF00B97505 /* NSCFTimer.h in Headers */,
+				BB3547692103414400B97505 /* NSNotification.h in Headers */,
+				BB3547712103421000B97505 /* __NSObserver.h in Headers */,
+				BB3547792103428C00B97505 /* NSTimer.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -131,6 +197,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB35476E210341B000B97505 /* NSConcreteNotification.m in Sources */,
+				BB3547722103421000B97505 /* __NSObserver.m in Sources */,
+				BB3547762103425C00B97505 /* NSIndexPath.m in Sources */,
+				BB35477A2103428C00B97505 /* NSTimer.m in Sources */,
+				BB35476A2103414400B97505 /* NSNotification.m in Sources */,
+				BB35477E210342BF00B97505 /* NSCFTimer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
