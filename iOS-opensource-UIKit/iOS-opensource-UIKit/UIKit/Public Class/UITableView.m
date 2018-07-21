@@ -8,7 +8,7 @@
 
 #import "UITableView.h"
 
-@implementation UITableView
+@implementation DUITableView
 
 /*
 // Only override drawRect: if you perform custom drawing.

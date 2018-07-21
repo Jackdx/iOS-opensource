@@ -12,6 +12,8 @@
 		BB354785210355F500B97505 /* UITableViewSection.m in Sources */ = {isa = PBXBuildFile; fileRef = BB354783210355F500B97505 /* UITableViewSection.m */; };
 		BB5A451621035CB100C1D6C1 /* UITableView.h in Headers */ = {isa = PBXBuildFile; fileRef = BB5A451421035CB100C1D6C1 /* UITableView.h */; };
 		BB5A451721035CB100C1D6C1 /* UITableView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB5A451521035CB100C1D6C1 /* UITableView.m */; };
+		BB5A451A2103625400C1D6C1 /* UIImagePickerController.h in Headers */ = {isa = PBXBuildFile; fileRef = BB5A45182103625400C1D6C1 /* UIImagePickerController.h */; };
+		BB5A451B2103625400C1D6C1 /* UIImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB5A45192103625400C1D6C1 /* UIImagePickerController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +25,8 @@
 		BB354787210356B800B97505 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BB5A451421035CB100C1D6C1 /* UITableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UITableView.h; sourceTree = "<group>"; };
 		BB5A451521035CB100C1D6C1 /* UITableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UITableView.m; sourceTree = "<group>"; };
+		BB5A45182103625400C1D6C1 /* UIImagePickerController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIImagePickerController.h; sourceTree = "<group>"; };
+		BB5A45192103625400C1D6C1 /* UIImagePickerController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIImagePickerController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +81,8 @@
 			children = (
 				BB5A451421035CB100C1D6C1 /* UITableView.h */,
 				BB5A451521035CB100C1D6C1 /* UITableView.m */,
+				BB5A45182103625400C1D6C1 /* UIImagePickerController.h */,
+				BB5A45192103625400C1D6C1 /* UIImagePickerController.m */,
 			);
 			path = "Public Class";
 			sourceTree = "<group>";
@@ -107,6 +113,7 @@
 			files = (
 				BB354784210355F500B97505 /* UITableViewSection.h in Headers */,
 				BB5A451621035CB100C1D6C1 /* UITableView.h in Headers */,
+				BB5A451A2103625400C1D6C1 /* UIImagePickerController.h in Headers */,
 				BB35474C2103385C00B97505 /* iOS_opensource_UIKit.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -181,6 +188,7 @@
 			files = (
 				BB354785210355F500B97505 /* UITableViewSection.m in Sources */,
 				BB5A451721035CB100C1D6C1 /* UITableView.m in Sources */,
+				BB5A451B2103625400C1D6C1 /* UIImagePickerController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -308,6 +316,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "iOS-opensource-UIKit/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.DX.iOS-opensource-UIKit";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
@@ -327,6 +336,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = "iOS-opensource-UIKit/Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.DX.iOS-opensource-UIKit";
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
