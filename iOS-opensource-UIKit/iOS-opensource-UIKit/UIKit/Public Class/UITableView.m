@@ -199,6 +199,8 @@
         unsigned int cellLayoutMarginsFollowReadableWidth : 1;
         unsigned int sectionContentInsetFollowsLayoutMargins : 1;
     } _tableFlags;
+    
+    int _tableReloadingSuspendedCount;
 }
 
 @end
@@ -206,21 +208,58 @@
 @implementation DUITableView
 @synthesize delegate = _delegate;
 
+- (void)reloadData
+{
+    
+}
 - (instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style
 {
-#warning -- 将要删除
-#if 0
-    UITableView *tableView;
-#endif
     self = [super initWithFrame:frame];
-    
+    if (self) {
+        
+    }
     return self;
 }
 - (instancetype)initWithFrame:(CGRect)frame
 {
     return [self initWithFrame:frame style:UITableViewStylePlain];
 }
+- (void)setDataSource:(id<UITableViewDataSource>)newSource
+{
+    _dataSource = newSource;
+    _tableFlags.dataSourceNumberOfSectionsInTableView = [_dataSource respondsToSelector:@selector(numberOfSectionsInTableView:)];
+    _tableFlags.dataSourceTitleForHeaderInSection = [_dataSource respondsToSelector:@selector(tableView:titleForHeaderInSection:)];
+    _tableFlags.dataSourceTitleForFooterInSection = [_dataSource respondsToSelector:@selector(tableView:titleForFooterInSection:)];
+    _tableFlags.dataSourceCommitEditingStyle = [_dataSource respondsToSelector:@selector(tableView:commitEditingStyle:forRowAtIndexPath:)];
+    _tableFlags.dataSourceCanEditRow = [_dataSource respondsToSelector:@selector(tableView:canEditRowAtIndexPath:)];
+    // 其他UITableViewDataSource协议略
+}
+- (void)setDelegate:(id<UITableViewDelegate>)newDelegate
+{
+    [super setDelegate:newDelegate];
+    _tableFlags.delegateHeightForRow = [newDelegate respondsToSelector:@selector(tableView:heightForRowAtIndexPath:)];
+    _tableFlags.delegateHeightForHeader = [newDelegate respondsToSelector:@selector(tableView:heightForHeaderInSection:)];
+    _tableFlags.delegateHeightForFooter = [newDelegate respondsToSelector:@selector(tableView:heightForFooterInSection:)];
+    _tableFlags.delegateViewForHeaderInSection = [newDelegate respondsToSelector:@selector(tableView:viewForHeaderInSection:)];
+    _tableFlags.delegateViewForFooterInSection = [newDelegate respondsToSelector:@selector(tableView:viewForFooterInSection:)];
+    _tableFlags.delegateWillSelectRow = [newDelegate respondsToSelector:@selector(tableView:willSelectRowAtIndexPath:)];
+    _tableFlags.delegateDidSelectRow = [newDelegate respondsToSelector:@selector(tableView:didSelectRowAtIndexPath:)];
+    _tableFlags.delegateWillDeselectRow = [newDelegate respondsToSelector:@selector(tableView:willDeselectRowAtIndexPath:)];
+    _tableFlags.delegateDidDeselectRow = [newDelegate respondsToSelector:@selector(tableView:didDeselectRowAtIndexPath:)];
+    _tableFlags.delegateWillBeginEditing = [newDelegate respondsToSelector:@selector(tableView:willBeginEditingRowAtIndexPath:)];
+    _tableFlags.delegateDidEndEditing = [newDelegate respondsToSelector:@selector(tableView:didEndEditingRowAtIndexPath:)];
+    _tableFlags.delegateTitleForDeleteConfirmationButtonForRowAtIndexPath = [newDelegate respondsToSelector:@selector(tableView:titleForDeleteConfirmationButtonForRowAtIndexPath:)];
+    // 其他UITableViewDelegate协议略
+}
 
+- (void)setBackgroundView:(UIView *)backgroundView
+{
+    if (_backgroundView) {
+        [_backgroundView removeFromSuperview];
+        _backgroundView = backgroundView;
+        [self _configureBackgroundView];
+    }
+}
 #pragma mark - register模块
 - (void)registerClass:(nullable Class)aClass forHeaderFooterViewReuseIdentifier:(NSString *)identifier
 {
@@ -256,7 +295,14 @@
     }
     [self _registerThing:nib asNib:YES forViewType:1 withReuseIdentifer:identifier];
 }
-
+- (UITableViewHeaderFooterView *)headerViewForSection:(NSInteger)section
+{
+   return [self _visibleHeaderViewForSection:section];
+}
+- (UITableViewHeaderFooterView *)footerViewForSection:(NSInteger)section
+{
+    return nil;
+}
 #pragma mark - dequeue模块
 - (UITableViewHeaderFooterView *)dequeueReusableHeaderFooterViewWithIdentifier:(NSString *)identifier
 {
@@ -274,6 +320,21 @@
     }
     [_delegate tableView:self heightForRowAtIndexPath:indexPath];
     return dequeueReusableCell;
+}
+
+- (NSInteger)numberOfSections
+{
+    [self _ensureRowDataIsLoaded];
+    return [_rowData numberOfSections];
+}
+- (NSInteger)numberOfRowsInSection:(NSInteger)section
+{
+    [self _ensureRowDataIsLoaded];
+    return [_rowData numberOfRowsInSection:section];
+}
+- (NSIndexPath *)indexPathForCell:(UITableViewCell *)cell
+{
+    return nil;
 }
 #pragma mark - private fun
 // 作用：真正的注册方法
@@ -369,6 +430,10 @@
     
     return dequeueReusableView;
 }
+- (UITableViewHeaderFooterView *)_visibleHeaderViewForSection:(NSInteger)section
+{
+    return nil;
+}
 
 // 作用：保证RowData加载
 - (void)_ensureRowDataIsLoaded
@@ -393,5 +458,33 @@
 - (void)_updateVisibleCellsNow:(BOOL)arg1 isRecursive:(BOOL)arg2
 {
     
+}
+
+- (void)_reloadDataIfNeeded
+{
+    if ((_tableFlags.needsReload == 0) && (_tableReloadingSuspendedCount == 0)) {
+        [self reloadData];
+    }
+}
+- (void)_configureBackgroundView
+{
+    
+}
+- (void)_addContentSubview:(UIView *)contentSubview atBack:(BOOL)atBack
+{
+    
+}
+- (id)_templateLayoutCellForCellsWithReuseIdentifier:(NSString *)identifier
+{
+    return nil;
+}
+- (void)_setupCellAnimations
+{
+    [self _updateVisibleCellsNow:NO isRecursive:NO];
+    [self _suspendReloads];
+}
+- (void)_suspendReloads
+{
+    _tableReloadingSuspendedCount = _tableReloadingSuspendedCount + 1;
 }
 @end

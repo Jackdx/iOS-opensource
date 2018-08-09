@@ -17,6 +17,11 @@
 - (instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style NS_DESIGNATED_INITIALIZER; // must specify style at creation. -initWithFrame: calls this with UITableViewStylePlain
 
 @property (nonatomic, readonly) NSArray *visibleCells;
+@property (nonatomic, readonly) NSInteger numberOfSections;
+
+@property (nonatomic, strong, nullable) UIView *backgroundView NS_AVAILABLE_IOS(3_2); 
+
+- (NSInteger)numberOfRowsInSection:(NSInteger)section;
 
 // register模块
 - (void)registerNib:(nullable UINib *)nib forCellReuseIdentifier:(NSString *)identifier NS_AVAILABLE_IOS(5_0);
@@ -29,6 +34,12 @@
 - (nullable __kindof UITableViewCell *)dequeueReusableCellWithIdentifier:(NSString *)identifier;  // Used by the delegate to acquire an already allocated cell, in lieu of allocating a new one.
 - (__kindof UITableViewCell *)dequeueReusableCellWithIdentifier:(NSString *)identifier forIndexPath:(NSIndexPath *)indexPath NS_AVAILABLE_IOS(6_0);
 - (nullable __kindof UITableViewHeaderFooterView *)dequeueReusableHeaderFooterViewWithIdentifier:(NSString *)identifier NS_AVAILABLE_IOS(6_0);
+
+- (void)reloadData;
+- (nullable NSIndexPath *)indexPathForCell:(UITableViewCell *)cell;
+
+- (nullable UITableViewHeaderFooterView *)headerViewForSection:(NSInteger)section NS_AVAILABLE_IOS(6_0);
+- (nullable UITableViewHeaderFooterView *)footerViewForSection:(NSInteger)section NS_AVAILABLE_IOS(6_0);
 @end
 
 NS_ASSUME_NONNULL_END
