@@ -260,6 +260,36 @@
         [self _configureBackgroundView];
     }
 }
+
+- (void)insertSections:(NSIndexSet *)sections withRowAnimation:(UITableViewRowAnimation)animation
+{
+    [self _updateSections:sections updateAction:0 withRowAnimation:animation headerFooterOnly:NO];
+}
+- (void)deleteSections:(NSIndexSet *)sections withRowAnimation:(UITableViewRowAnimation)animation
+{
+    [self _updateSections:sections updateAction:1 withRowAnimation:animation headerFooterOnly:NO];
+}
+- (void)reloadSections:(NSIndexSet *)sections withRowAnimation:(UITableViewRowAnimation)animation
+{
+    [self _updateSections:sections updateAction:2 withRowAnimation:animation headerFooterOnly:NO];
+}
+- (void)_reloadSectionHeaderFooters:(id)arg1 withRowAnimation:(UITableViewRowAnimation)animation
+{
+    [self _updateSections:arg1 updateAction:2 withRowAnimation:animation headerFooterOnly:YES];
+}
+
+- (void)insertRowsAtIndexPaths:(NSArray<NSIndexPath *> *)indexPaths withRowAnimation:(UITableViewRowAnimation)animation
+{
+    [self _updateRowsAtIndexPaths:indexPaths updateAction:0 withRowAnimation:animation];
+}
+- (void)deleteRowsAtIndexPaths:(NSArray<NSIndexPath *> *)indexPaths withRowAnimation:(UITableViewRowAnimation)animation
+{
+    [self _updateRowsAtIndexPaths:indexPaths updateAction:1 withRowAnimation:animation];
+}
+- (void)reloadRowsAtIndexPaths:(NSArray<NSIndexPath *> *)indexPaths withRowAnimation:(UITableViewRowAnimation)animation
+{
+    [self _updateRowsAtIndexPaths:indexPaths updateAction:2 withRowAnimation:animation];
+}
 #pragma mark - register模块
 - (void)registerClass:(nullable Class)aClass forHeaderFooterViewReuseIdentifier:(NSString *)identifier
 {
@@ -413,19 +443,6 @@
 }
 - (UIView *)_dequeueReusableViewOfType:(int)type withIdentifier:(NSString *)identifier
 {
-    /*
-    rcx = arg3;  identifier
-    var_2C = arg2;  type
-    var_58 = _cmd;  _cmd
-    r13 = self;   self
-    r14 = [rcx retain];  identifier
-    r15 = [[r13 _cellReuseMapForType:arg2] retain];  reusablecellsDic
-    rbx = [[r15 objectForKey:r14] retain]; reusablecell
-    var_40 = rbx;  reusablecell
-    rdi = r15;    reusablecellsDic
-    r15 = _objc_msgSend;
-    [rdi release];
-    */
     UIView *dequeueReusableView = [[self _cellReuseMapForType:type] objectForKey:identifier];
     
     return dequeueReusableView;
@@ -486,5 +503,13 @@
 - (void)_suspendReloads
 {
     _tableReloadingSuspendedCount = _tableReloadingSuspendedCount + 1;
+}
+- (void)_updateSections:(id)arg1 updateAction:(int)arg2 withRowAnimation:(int)arg3 headerFooterOnly:(BOOL)arg4
+{
+    
+}
+- (void)_updateRowsAtIndexPaths:(id)arg1 updateAction:(int)arg2 withRowAnimation:(int)arg3
+{
+    
 }
 @end

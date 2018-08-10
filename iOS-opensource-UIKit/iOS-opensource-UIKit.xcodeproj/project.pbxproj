@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BB0DDC3C211D2909002C83BB /* UICollectionView.h in Headers */ = {isa = PBXBuildFile; fileRef = BB0DDC3A211D2909002C83BB /* UICollectionView.h */; };
+		BB0DDC3D211D2909002C83BB /* UICollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB0DDC3B211D2909002C83BB /* UICollectionView.m */; };
+		BB0DDC40211D2A16002C83BB /* UICollectionViewData.h in Headers */ = {isa = PBXBuildFile; fileRef = BB0DDC3E211D2A16002C83BB /* UICollectionViewData.h */; };
+		BB0DDC41211D2A16002C83BB /* UICollectionViewData.m in Sources */ = {isa = PBXBuildFile; fileRef = BB0DDC3F211D2A16002C83BB /* UICollectionViewData.m */; };
+		BB0DDC44211D2C92002C83BB /* UITableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = BB0DDC42211D2C92002C83BB /* UITableViewController.h */; };
+		BB0DDC45211D2C92002C83BB /* UITableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB0DDC43211D2C92002C83BB /* UITableViewController.m */; };
 		BB35474C2103385C00B97505 /* iOS_opensource_UIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = BB35474A2103385C00B97505 /* iOS_opensource_UIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BB354784210355F500B97505 /* UITableViewSection.h in Headers */ = {isa = PBXBuildFile; fileRef = BB354782210355F500B97505 /* UITableViewSection.h */; };
 		BB354785210355F500B97505 /* UITableViewSection.m in Sources */ = {isa = PBXBuildFile; fileRef = BB354783210355F500B97505 /* UITableViewSection.m */; };
@@ -23,6 +29,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BB0DDC3A211D2909002C83BB /* UICollectionView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UICollectionView.h; sourceTree = "<group>"; };
+		BB0DDC3B211D2909002C83BB /* UICollectionView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UICollectionView.m; sourceTree = "<group>"; };
+		BB0DDC3E211D2A16002C83BB /* UICollectionViewData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UICollectionViewData.h; sourceTree = "<group>"; };
+		BB0DDC3F211D2A16002C83BB /* UICollectionViewData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UICollectionViewData.m; sourceTree = "<group>"; };
+		BB0DDC42211D2C92002C83BB /* UITableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UITableViewController.h; sourceTree = "<group>"; };
+		BB0DDC43211D2C92002C83BB /* UITableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UITableViewController.m; sourceTree = "<group>"; };
 		BB3547472103385C00B97505 /* iOS_opensource_UIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = iOS_opensource_UIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB35474A2103385C00B97505 /* iOS_opensource_UIKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iOS_opensource_UIKit.h; sourceTree = "<group>"; };
 		BB35474B2103385C00B97505 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -97,6 +109,10 @@
 				BB5A45192103625400C1D6C1 /* UIImagePickerController.m */,
 				BB3E6019211B0E970073F367 /* UIViewController.h */,
 				BB3E601A211B0E970073F367 /* UIViewController.m */,
+				BB0DDC3A211D2909002C83BB /* UICollectionView.h */,
+				BB0DDC3B211D2909002C83BB /* UICollectionView.m */,
+				BB0DDC42211D2C92002C83BB /* UITableViewController.h */,
+				BB0DDC43211D2C92002C83BB /* UITableViewController.m */,
 			);
 			path = "Public Class";
 			sourceTree = "<group>";
@@ -110,6 +126,8 @@
 				BBCCA57A210387FD0040B531 /* UIViewController+pri.m */,
 				BB3E6015211A903A0073F367 /* UITableViewRowData.h */,
 				BB3E6016211A903A0073F367 /* UITableViewRowData.m */,
+				BB0DDC3E211D2A16002C83BB /* UICollectionViewData.h */,
+				BB0DDC3F211D2A16002C83BB /* UICollectionViewData.m */,
 			);
 			path = "Private Class";
 			sourceTree = "<group>";
@@ -133,9 +151,12 @@
 				BB354784210355F500B97505 /* UITableViewSection.h in Headers */,
 				BB3E601B211B0E970073F367 /* UIViewController.h in Headers */,
 				BB5A451621035CB100C1D6C1 /* UITableView.h in Headers */,
+				BB0DDC44211D2C92002C83BB /* UITableViewController.h in Headers */,
 				BB3E6017211A903A0073F367 /* UITableViewRowData.h in Headers */,
+				BB0DDC3C211D2909002C83BB /* UICollectionView.h in Headers */,
 				BB5A451A2103625400C1D6C1 /* UIImagePickerController.h in Headers */,
 				BB35474C2103385C00B97505 /* iOS_opensource_UIKit.h in Headers */,
+				BB0DDC40211D2A16002C83BB /* UICollectionViewData.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,6 +228,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB0DDC41211D2A16002C83BB /* UICollectionViewData.m in Sources */,
+				BB0DDC45211D2C92002C83BB /* UITableViewController.m in Sources */,
+				BB0DDC3D211D2909002C83BB /* UICollectionView.m in Sources */,
 				BB3E6018211A903A0073F367 /* UITableViewRowData.m in Sources */,
 				BBCCA57C210387FD0040B531 /* UIViewController+pri.m in Sources */,
 				BB3E601C211B0E970073F367 /* UIViewController.m in Sources */,
