@@ -13,6 +13,8 @@
 		BB0DDC41211D2A16002C83BB /* UICollectionViewData.m in Sources */ = {isa = PBXBuildFile; fileRef = BB0DDC3F211D2A16002C83BB /* UICollectionViewData.m */; };
 		BB0DDC44211D2C92002C83BB /* UITableViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = BB0DDC42211D2C92002C83BB /* UITableViewController.h */; };
 		BB0DDC45211D2C92002C83BB /* UITableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB0DDC43211D2C92002C83BB /* UITableViewController.m */; };
+		BB0DDC48211D3899002C83BB /* _UIFilteredDataSource.h in Headers */ = {isa = PBXBuildFile; fileRef = BB0DDC46211D3899002C83BB /* _UIFilteredDataSource.h */; };
+		BB0DDC49211D3899002C83BB /* _UIFilteredDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BB0DDC47211D3899002C83BB /* _UIFilteredDataSource.m */; };
 		BB35474C2103385C00B97505 /* iOS_opensource_UIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = BB35474A2103385C00B97505 /* iOS_opensource_UIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BB354784210355F500B97505 /* UITableViewSection.h in Headers */ = {isa = PBXBuildFile; fileRef = BB354782210355F500B97505 /* UITableViewSection.h */; };
 		BB354785210355F500B97505 /* UITableViewSection.m in Sources */ = {isa = PBXBuildFile; fileRef = BB354783210355F500B97505 /* UITableViewSection.m */; };
@@ -35,6 +37,8 @@
 		BB0DDC3F211D2A16002C83BB /* UICollectionViewData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UICollectionViewData.m; sourceTree = "<group>"; };
 		BB0DDC42211D2C92002C83BB /* UITableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UITableViewController.h; sourceTree = "<group>"; };
 		BB0DDC43211D2C92002C83BB /* UITableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UITableViewController.m; sourceTree = "<group>"; };
+		BB0DDC46211D3899002C83BB /* _UIFilteredDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _UIFilteredDataSource.h; sourceTree = "<group>"; };
+		BB0DDC47211D3899002C83BB /* _UIFilteredDataSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = _UIFilteredDataSource.m; sourceTree = "<group>"; };
 		BB3547472103385C00B97505 /* iOS_opensource_UIKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = iOS_opensource_UIKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB35474A2103385C00B97505 /* iOS_opensource_UIKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iOS_opensource_UIKit.h; sourceTree = "<group>"; };
 		BB35474B2103385C00B97505 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -128,6 +132,8 @@
 				BB3E6016211A903A0073F367 /* UITableViewRowData.m */,
 				BB0DDC3E211D2A16002C83BB /* UICollectionViewData.h */,
 				BB0DDC3F211D2A16002C83BB /* UICollectionViewData.m */,
+				BB0DDC46211D3899002C83BB /* _UIFilteredDataSource.h */,
+				BB0DDC47211D3899002C83BB /* _UIFilteredDataSource.m */,
 			);
 			path = "Private Class";
 			sourceTree = "<group>";
@@ -154,6 +160,7 @@
 				BB0DDC44211D2C92002C83BB /* UITableViewController.h in Headers */,
 				BB3E6017211A903A0073F367 /* UITableViewRowData.h in Headers */,
 				BB0DDC3C211D2909002C83BB /* UICollectionView.h in Headers */,
+				BB0DDC48211D3899002C83BB /* _UIFilteredDataSource.h in Headers */,
 				BB5A451A2103625400C1D6C1 /* UIImagePickerController.h in Headers */,
 				BB35474C2103385C00B97505 /* iOS_opensource_UIKit.h in Headers */,
 				BB0DDC40211D2A16002C83BB /* UICollectionViewData.h in Headers */,
@@ -229,6 +236,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB0DDC41211D2A16002C83BB /* UICollectionViewData.m in Sources */,
+				BB0DDC49211D3899002C83BB /* _UIFilteredDataSource.m in Sources */,
 				BB0DDC45211D2C92002C83BB /* UITableViewController.m in Sources */,
 				BB0DDC3D211D2909002C83BB /* UICollectionView.m in Sources */,
 				BB3E6018211A903A0073F367 /* UITableViewRowData.m in Sources */,
