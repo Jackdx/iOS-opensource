@@ -28,6 +28,10 @@
 		BB5A451B2103625400C1D6C1 /* UIImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB5A45192103625400C1D6C1 /* UIImagePickerController.m */; };
 		BBCCA57B210387FD0040B531 /* UIViewController+pri.h in Headers */ = {isa = PBXBuildFile; fileRef = BBCCA579210387FD0040B531 /* UIViewController+pri.h */; };
 		BBCCA57C210387FD0040B531 /* UIViewController+pri.m in Sources */ = {isa = PBXBuildFile; fileRef = BBCCA57A210387FD0040B531 /* UIViewController+pri.m */; };
+		BBDDA43821213DE80086587E /* UIView.h in Headers */ = {isa = PBXBuildFile; fileRef = BBDDA43621213DE80086587E /* UIView.h */; };
+		BBDDA43921213DE80086587E /* UIView.m in Sources */ = {isa = PBXBuildFile; fileRef = BBDDA43721213DE80086587E /* UIView.m */; };
+		BBDDA43C21214F5C0086587E /* UITableViewHeaderFooterView.h in Headers */ = {isa = PBXBuildFile; fileRef = BBDDA43A21214F5C0086587E /* UITableViewHeaderFooterView.h */; };
+		BBDDA43D21214F5C0086587E /* UITableViewHeaderFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = BBDDA43B21214F5C0086587E /* UITableViewHeaderFooterView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +59,10 @@
 		BB5A45192103625400C1D6C1 /* UIImagePickerController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIImagePickerController.m; sourceTree = "<group>"; };
 		BBCCA579210387FD0040B531 /* UIViewController+pri.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+pri.h"; sourceTree = "<group>"; };
 		BBCCA57A210387FD0040B531 /* UIViewController+pri.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+pri.m"; sourceTree = "<group>"; };
+		BBDDA43621213DE80086587E /* UIView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIView.h; sourceTree = "<group>"; };
+		BBDDA43721213DE80086587E /* UIView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIView.m; sourceTree = "<group>"; };
+		BBDDA43A21214F5C0086587E /* UITableViewHeaderFooterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UITableViewHeaderFooterView.h; sourceTree = "<group>"; };
+		BBDDA43B21214F5C0086587E /* UITableViewHeaderFooterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UITableViewHeaderFooterView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +125,10 @@
 				BB0DDC3B211D2909002C83BB /* UICollectionView.m */,
 				BB0DDC42211D2C92002C83BB /* UITableViewController.h */,
 				BB0DDC43211D2C92002C83BB /* UITableViewController.m */,
+				BBDDA43621213DE80086587E /* UIView.h */,
+				BBDDA43721213DE80086587E /* UIView.m */,
+				BBDDA43A21214F5C0086587E /* UITableViewHeaderFooterView.h */,
+				BBDDA43B21214F5C0086587E /* UITableViewHeaderFooterView.m */,
 			);
 			path = "Public Class";
 			sourceTree = "<group>";
@@ -160,7 +172,9 @@
 				BB0DDC44211D2C92002C83BB /* UITableViewController.h in Headers */,
 				BB3E6017211A903A0073F367 /* UITableViewRowData.h in Headers */,
 				BB0DDC3C211D2909002C83BB /* UICollectionView.h in Headers */,
+				BBDDA43821213DE80086587E /* UIView.h in Headers */,
 				BB0DDC48211D3899002C83BB /* _UIFilteredDataSource.h in Headers */,
+				BBDDA43C21214F5C0086587E /* UITableViewHeaderFooterView.h in Headers */,
 				BB5A451A2103625400C1D6C1 /* UIImagePickerController.h in Headers */,
 				BB35474C2103385C00B97505 /* iOS_opensource_UIKit.h in Headers */,
 				BB0DDC40211D2A16002C83BB /* UICollectionViewData.h in Headers */,
@@ -239,10 +253,12 @@
 				BB0DDC49211D3899002C83BB /* _UIFilteredDataSource.m in Sources */,
 				BB0DDC45211D2C92002C83BB /* UITableViewController.m in Sources */,
 				BB0DDC3D211D2909002C83BB /* UICollectionView.m in Sources */,
+				BBDDA43D21214F5C0086587E /* UITableViewHeaderFooterView.m in Sources */,
 				BB3E6018211A903A0073F367 /* UITableViewRowData.m in Sources */,
 				BBCCA57C210387FD0040B531 /* UIViewController+pri.m in Sources */,
 				BB3E601C211B0E970073F367 /* UIViewController.m in Sources */,
 				BB354785210355F500B97505 /* UITableViewSection.m in Sources */,
+				BBDDA43921213DE80086587E /* UIView.m in Sources */,
 				BB5A451721035CB100C1D6C1 /* UITableView.m in Sources */,
 				BB5A451B2103625400C1D6C1 /* UIImagePickerController.m in Sources */,
 			);
