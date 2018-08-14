@@ -14,6 +14,7 @@
 {
     _UITableViewCellActionButton *_button;
 }
+
 @property (getter=_handler, nonatomic, readonly) void (^handler)(UITableViewRowAction *, NSIndexPath *) ;
 
 - (instancetype)_initWithStyle:(UITableViewRowActionStyle)style title:(NSString *)title handler:(void (^)(UITableViewRowAction *, NSIndexPath *))handler;
