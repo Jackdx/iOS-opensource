@@ -32,6 +32,12 @@
 		BBDDA43921213DE80086587E /* UIView.m in Sources */ = {isa = PBXBuildFile; fileRef = BBDDA43721213DE80086587E /* UIView.m */; };
 		BBDDA43C21214F5C0086587E /* UITableViewHeaderFooterView.h in Headers */ = {isa = PBXBuildFile; fileRef = BBDDA43A21214F5C0086587E /* UITableViewHeaderFooterView.h */; };
 		BBDDA43D21214F5C0086587E /* UITableViewHeaderFooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = BBDDA43B21214F5C0086587E /* UITableViewHeaderFooterView.m */; };
+		BBDDDA882121A35C003C2B9E /* UITableViewRowAction.h in Headers */ = {isa = PBXBuildFile; fileRef = BBDDDA862121A35C003C2B9E /* UITableViewRowAction.h */; };
+		BBDDDA892121A35C003C2B9E /* UITableViewRowAction.m in Sources */ = {isa = PBXBuildFile; fileRef = BBDDDA872121A35C003C2B9E /* UITableViewRowAction.m */; };
+		BBDDDA8C2121AA5A003C2B9E /* _UITableViewCellActionButton.h in Headers */ = {isa = PBXBuildFile; fileRef = BBDDDA8A2121AA5A003C2B9E /* _UITableViewCellActionButton.h */; };
+		BBDDDA8D2121AA5A003C2B9E /* _UITableViewCellActionButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BBDDDA8B2121AA5A003C2B9E /* _UITableViewCellActionButton.m */; };
+		BBDDDA94212269F2003C2B9E /* UIColor+dx.h in Headers */ = {isa = PBXBuildFile; fileRef = BBDDDA92212269F2003C2B9E /* UIColor+dx.h */; };
+		BBDDDA95212269F2003C2B9E /* UIColor+dx.m in Sources */ = {isa = PBXBuildFile; fileRef = BBDDDA93212269F2003C2B9E /* UIColor+dx.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -63,6 +69,12 @@
 		BBDDA43721213DE80086587E /* UIView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIView.m; sourceTree = "<group>"; };
 		BBDDA43A21214F5C0086587E /* UITableViewHeaderFooterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UITableViewHeaderFooterView.h; sourceTree = "<group>"; };
 		BBDDA43B21214F5C0086587E /* UITableViewHeaderFooterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UITableViewHeaderFooterView.m; sourceTree = "<group>"; };
+		BBDDDA862121A35C003C2B9E /* UITableViewRowAction.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UITableViewRowAction.h; sourceTree = "<group>"; };
+		BBDDDA872121A35C003C2B9E /* UITableViewRowAction.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UITableViewRowAction.m; sourceTree = "<group>"; };
+		BBDDDA8A2121AA5A003C2B9E /* _UITableViewCellActionButton.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = _UITableViewCellActionButton.h; sourceTree = "<group>"; };
+		BBDDDA8B2121AA5A003C2B9E /* _UITableViewCellActionButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = _UITableViewCellActionButton.m; sourceTree = "<group>"; };
+		BBDDDA92212269F2003C2B9E /* UIColor+dx.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIColor+dx.h"; sourceTree = "<group>"; };
+		BBDDDA93212269F2003C2B9E /* UIColor+dx.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIColor+dx.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,6 +118,7 @@
 		BB35477F210355AE00B97505 /* UIKit */ = {
 			isa = PBXGroup;
 			children = (
+				BBDDDA91212269C7003C2B9E /* Category */,
 				BB354780210355B800B97505 /* Public Class */,
 				BB354781210355D800B97505 /* Private Class */,
 			);
@@ -129,6 +142,8 @@
 				BBDDA43721213DE80086587E /* UIView.m */,
 				BBDDA43A21214F5C0086587E /* UITableViewHeaderFooterView.h */,
 				BBDDA43B21214F5C0086587E /* UITableViewHeaderFooterView.m */,
+				BBDDDA862121A35C003C2B9E /* UITableViewRowAction.h */,
+				BBDDDA872121A35C003C2B9E /* UITableViewRowAction.m */,
 			);
 			path = "Public Class";
 			sourceTree = "<group>";
@@ -146,6 +161,8 @@
 				BB0DDC3F211D2A16002C83BB /* UICollectionViewData.m */,
 				BB0DDC46211D3899002C83BB /* _UIFilteredDataSource.h */,
 				BB0DDC47211D3899002C83BB /* _UIFilteredDataSource.m */,
+				BBDDDA8A2121AA5A003C2B9E /* _UITableViewCellActionButton.h */,
+				BBDDDA8B2121AA5A003C2B9E /* _UITableViewCellActionButton.m */,
 			);
 			path = "Private Class";
 			sourceTree = "<group>";
@@ -158,6 +175,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		BBDDDA91212269C7003C2B9E /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				BBDDDA92212269F2003C2B9E /* UIColor+dx.h */,
+				BBDDDA93212269F2003C2B9E /* UIColor+dx.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -166,11 +192,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				BBCCA57B210387FD0040B531 /* UIViewController+pri.h in Headers */,
+				BBDDDA882121A35C003C2B9E /* UITableViewRowAction.h in Headers */,
 				BB354784210355F500B97505 /* UITableViewSection.h in Headers */,
 				BB3E601B211B0E970073F367 /* UIViewController.h in Headers */,
 				BB5A451621035CB100C1D6C1 /* UITableView.h in Headers */,
 				BB0DDC44211D2C92002C83BB /* UITableViewController.h in Headers */,
+				BBDDDA94212269F2003C2B9E /* UIColor+dx.h in Headers */,
 				BB3E6017211A903A0073F367 /* UITableViewRowData.h in Headers */,
+				BBDDDA8C2121AA5A003C2B9E /* _UITableViewCellActionButton.h in Headers */,
 				BB0DDC3C211D2909002C83BB /* UICollectionView.h in Headers */,
 				BBDDA43821213DE80086587E /* UIView.h in Headers */,
 				BB0DDC48211D3899002C83BB /* _UIFilteredDataSource.h in Headers */,
@@ -254,10 +283,13 @@
 				BB0DDC45211D2C92002C83BB /* UITableViewController.m in Sources */,
 				BB0DDC3D211D2909002C83BB /* UICollectionView.m in Sources */,
 				BBDDA43D21214F5C0086587E /* UITableViewHeaderFooterView.m in Sources */,
+				BBDDDA8D2121AA5A003C2B9E /* _UITableViewCellActionButton.m in Sources */,
 				BB3E6018211A903A0073F367 /* UITableViewRowData.m in Sources */,
+				BBDDDA95212269F2003C2B9E /* UIColor+dx.m in Sources */,
 				BBCCA57C210387FD0040B531 /* UIViewController+pri.m in Sources */,
 				BB3E601C211B0E970073F367 /* UIViewController.m in Sources */,
 				BB354785210355F500B97505 /* UITableViewSection.m in Sources */,
+				BBDDDA892121A35C003C2B9E /* UITableViewRowAction.m in Sources */,
 				BBDDA43921213DE80086587E /* UIView.m in Sources */,
 				BB5A451721035CB100C1D6C1 /* UITableView.m in Sources */,
 				BB5A451B2103625400C1D6C1 /* UIImagePickerController.m in Sources */,
