@@ -18,6 +18,8 @@
 		BB35474C2103385C00B97505 /* iOS_opensource_UIKit.h in Headers */ = {isa = PBXBuildFile; fileRef = BB35474A2103385C00B97505 /* iOS_opensource_UIKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BB354784210355F500B97505 /* UITableViewSection.h in Headers */ = {isa = PBXBuildFile; fileRef = BB354782210355F500B97505 /* UITableViewSection.h */; };
 		BB354785210355F500B97505 /* UITableViewSection.m in Sources */ = {isa = PBXBuildFile; fileRef = BB354783210355F500B97505 /* UITableViewSection.m */; };
+		BB390AE721244DAF00983969 /* UIAlertControllerStackManager.h in Headers */ = {isa = PBXBuildFile; fileRef = BB390AE521244DAF00983969 /* UIAlertControllerStackManager.h */; };
+		BB390AE821244DAF00983969 /* UIAlertControllerStackManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BB390AE621244DAF00983969 /* UIAlertControllerStackManager.m */; };
 		BB3E6017211A903A0073F367 /* UITableViewRowData.h in Headers */ = {isa = PBXBuildFile; fileRef = BB3E6015211A903A0073F367 /* UITableViewRowData.h */; };
 		BB3E6018211A903A0073F367 /* UITableViewRowData.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3E6016211A903A0073F367 /* UITableViewRowData.m */; };
 		BB3E601B211B0E970073F367 /* UIViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = BB3E6019211B0E970073F367 /* UIViewController.h */; };
@@ -55,6 +57,8 @@
 		BB354782210355F500B97505 /* UITableViewSection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UITableViewSection.h; sourceTree = "<group>"; };
 		BB354783210355F500B97505 /* UITableViewSection.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UITableViewSection.m; sourceTree = "<group>"; };
 		BB354787210356B800B97505 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		BB390AE521244DAF00983969 /* UIAlertControllerStackManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIAlertControllerStackManager.h; sourceTree = "<group>"; };
+		BB390AE621244DAF00983969 /* UIAlertControllerStackManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIAlertControllerStackManager.m; sourceTree = "<group>"; };
 		BB3E6015211A903A0073F367 /* UITableViewRowData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UITableViewRowData.h; sourceTree = "<group>"; };
 		BB3E6016211A903A0073F367 /* UITableViewRowData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UITableViewRowData.m; sourceTree = "<group>"; };
 		BB3E6019211B0E970073F367 /* UIViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIViewController.h; sourceTree = "<group>"; };
@@ -163,6 +167,8 @@
 				BB0DDC47211D3899002C83BB /* _UIFilteredDataSource.m */,
 				BBDDDA8A2121AA5A003C2B9E /* _UITableViewCellActionButton.h */,
 				BBDDDA8B2121AA5A003C2B9E /* _UITableViewCellActionButton.m */,
+				BB390AE521244DAF00983969 /* UIAlertControllerStackManager.h */,
+				BB390AE621244DAF00983969 /* UIAlertControllerStackManager.m */,
 			);
 			path = "Private Class";
 			sourceTree = "<group>";
@@ -197,6 +203,7 @@
 				BB3E601B211B0E970073F367 /* UIViewController.h in Headers */,
 				BB5A451621035CB100C1D6C1 /* UITableView.h in Headers */,
 				BB0DDC44211D2C92002C83BB /* UITableViewController.h in Headers */,
+				BB390AE721244DAF00983969 /* UIAlertControllerStackManager.h in Headers */,
 				BBDDDA94212269F2003C2B9E /* UIColor+dx.h in Headers */,
 				BB3E6017211A903A0073F367 /* UITableViewRowData.h in Headers */,
 				BBDDDA8C2121AA5A003C2B9E /* _UITableViewCellActionButton.h in Headers */,
@@ -283,6 +290,7 @@
 				BB0DDC45211D2C92002C83BB /* UITableViewController.m in Sources */,
 				BB0DDC3D211D2909002C83BB /* UICollectionView.m in Sources */,
 				BBDDA43D21214F5C0086587E /* UITableViewHeaderFooterView.m in Sources */,
+				BB390AE821244DAF00983969 /* UIAlertControllerStackManager.m in Sources */,
 				BBDDDA8D2121AA5A003C2B9E /* _UITableViewCellActionButton.m in Sources */,
 				BB3E6018211A903A0073F367 /* UITableViewRowData.m in Sources */,
 				BBDDDA95212269F2003C2B9E /* UIColor+dx.m in Sources */,
