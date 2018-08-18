@@ -8,8 +8,9 @@
 
 #import "UITableView.h"
 #import "UITableViewRowData.h"
+#import "UIGestureRecognizerDelegatePrivate.h"
 
-@interface DUITableView()
+@interface DUITableView() <UIScrollViewDelegate,UIGestureRecognizerDelegatePrivate>
 {
     NSMutableArray *_visibleCells; // 可见的cells数组，元素为UITableViewCell
     NSMutableArray *_selectedIndexPaths; // 选中的IndexPaths数组，元素为NSIndexPath
@@ -207,7 +208,7 @@
         unsigned int sectionContentInsetFollowsLayoutMargins : 1;
     } _tableFlags;
     
-    int _tableReloadingSuspendedCount;
+    int _tableReloadingSuspendedCount; //tableReloading的Suspended的个数
 }
 
 
@@ -288,16 +289,116 @@
 {
     // 待实现
 }
+- (UITableViewHeaderFooterView *)headerViewForSection:(NSInteger)section
+{
+    return [self _visibleHeaderViewForSection:section];
+}
+- (UITableViewHeaderFooterView *)footerViewForSection:(NSInteger)section
+{
+    return [self _visibleFooterViewForSection:section];
+}
+
+// register模块
+- (void)registerClass:(nullable Class)aClass forHeaderFooterViewReuseIdentifier:(NSString *)identifier
+{
+    if ([identifier length] == 0) {
+        [NSException raise:NSInvalidArgumentException format:@"must pass a valid reuse identifier to -[UITableView %s]",__func__];
+    }
+    if ((aClass) && ([aClass isSubclassOfClass:[UITableViewHeaderFooterView class]] == NO) && ([UITableViewHeaderFooterView class]) != aClass) {
+        [NSException raise:NSInvalidArgumentException format:@"must pass a class of kind %@", [UITableViewHeaderFooterView class]];
+    }
+    [self _registerThing:aClass asNib:NO forViewType:2 withReuseIdentifer:identifier];
+}
+- (void)registerNib:(nullable UINib *)nib forHeaderFooterViewReuseIdentifier:(NSString *)identifier
+{
+    if ([identifier length] == 0) {
+        [NSException raise:NSInvalidArgumentException format:@"must pass a valid reuse identifier to -[UITableView %s]",__func__];
+    }
+    [self _registerThing:nib asNib:YES forViewType:2 withReuseIdentifer:identifier];
+}
+- (void)registerClass:(nullable Class)aClass forCellReuseIdentifier:(NSString *)identifier
+{
+    if ([identifier length] == 0) {
+        [NSException raise:NSInvalidArgumentException format:@"must pass a valid reuse identifier to -[UITableView %s]",__func__];
+    }
+    if ((aClass) && ([aClass isSubclassOfClass:[UITableViewCell class]] == NO) && ([UITableViewCell class]) != aClass) {
+        [NSException raise:NSInvalidArgumentException format:@"must pass a class of kind %@", [UITableViewCell class]];
+    }
+    [self _registerThing:aClass asNib:NO forViewType:1 withReuseIdentifer:identifier];
+}
+- (void)registerNib:(nullable UINib *)nib forCellReuseIdentifier:(NSString *)identifier
+{
+    if ([identifier length] == 0) {
+        [NSException raise:NSInvalidArgumentException format:@"must pass a valid reuse identifier to -[UITableView %s]",__func__];
+    }
+    [self _registerThing:nib asNib:YES forViewType:1 withReuseIdentifer:identifier];
+}
+- (void)deselectRowAtIndexPath:(NSIndexPath *)indexPath animated:(BOOL)animated
+{
+    [self _deselectRowAtIndexPath:indexPath animated:animated notifyDelegate:NO];
+}
 #pragma mark - rewrite func
 - (instancetype)initWithFrame:(CGRect)frame
 {
     return [self initWithFrame:frame style:UITableViewStylePlain];
 }
+- (void)layoutSubviews
+{
+    // 待实现
+}
 
 
 #pragma mark - protocol func
-
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    // 待实现
+}
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
+{
+    // 待实现
+}
+- (void)scrollViewWillEndDragging:(UIScrollView *)scrollView withVelocity:(CGPoint)velocity targetContentOffset:(inout CGPoint *)targetContentOffset
+{
+    // 待实现
+}
+- (BOOL)_gestureRecognizer:(id)arg1 shouldBeRequiredToFailByGestureRecognizer:(id)arg2
+{
+    // 待实现
+    return YES;
+}
+- (BOOL)_gestureRecognizer:(id)arg1 shouldRequireFailureOfGestureRecognizer:(id)arg2
+{
+    // 待实现
+    return YES;
+}
+- (BOOL)_gestureRecognizerShouldBegin:(id)arg1
+{
+    // 待实现
+    return YES;
+}
 #pragma mark - private func
+- (void)_deselectRowAtIndexPath:(NSIndexPath *)indexPath animated:(BOOL)animated notifyDelegate:(BOOL)notify
+{
+    // 待实现
+}
+- (UITableViewHeaderFooterView *)_visibleFooterViewForSection:(NSInteger)section
+{
+    return [self _visibleFooterViewForSection:section includeTentativeViews:NO];
+}
+- (UITableViewHeaderFooterView *)_visibleFooterViewForSection:(NSInteger)section includeTentativeViews:(BOOL)include
+{
+    // 待实现
+    return nil;
+}
+- (UITableViewHeaderFooterView *)_visibleHeaderViewForSection:(NSInteger)section
+{
+    return [self _visibleHeaderViewForSection:section includeTentativeViews:NO];
+}
+- (UITableViewHeaderFooterView *)_visibleHeaderViewForSection:(NSInteger)section includeTentativeViews:(BOOL)include
+{
+    // 待实现
+    return nil;
+}
 - (void)_suspendReloads
 {
     _tableReloadingSuspendedCount = _tableReloadingSuspendedCount + 1;
@@ -416,6 +517,14 @@
      return dequeueReusableView;
      */
     return nil;
+}
+- (UIColor *)tableHeaderBackgroundColor
+{
+    return _tableHeaderBackgroundView.backgroundColor;
+}
+- (void)setTableHeaderBackgroundColor:(UIColor *)tableHeaderBackgroundColor
+{
+    // 待实现
 }
 #pragma mark - need obvious realize set-get func
 - (UIView *)_tableHeaderBackgroundView
@@ -547,49 +656,9 @@
 
 
 
-#pragma mark - register模块
-- (void)registerClass:(nullable Class)aClass forHeaderFooterViewReuseIdentifier:(NSString *)identifier
-{
-    if ([identifier length] == 0) {
-        [NSException raise:NSInvalidArgumentException format:@"must pass a valid reuse identifier to -[UITableView %s]",__func__];
-    }
-    if ((aClass) && ([aClass isSubclassOfClass:[UITableViewHeaderFooterView class]] == NO) && ([UITableViewHeaderFooterView class]) != aClass) {
-        [NSException raise:NSInvalidArgumentException format:@"must pass a class of kind %@", [UITableViewHeaderFooterView class]];
-    }
-    [self _registerThing:aClass asNib:NO forViewType:2 withReuseIdentifer:identifier];
-}
-- (void)registerNib:(nullable UINib *)nib forHeaderFooterViewReuseIdentifier:(NSString *)identifier
-{
-    if ([identifier length] == 0) {
-        [NSException raise:NSInvalidArgumentException format:@"must pass a valid reuse identifier to -[UITableView %s]",__func__];
-    }
-    [self _registerThing:nib asNib:YES forViewType:2 withReuseIdentifer:identifier];
-}
-- (void)registerClass:(nullable Class)aClass forCellReuseIdentifier:(NSString *)identifier
-{
-    if ([identifier length] == 0) {
-        [NSException raise:NSInvalidArgumentException format:@"must pass a valid reuse identifier to -[UITableView %s]",__func__];
-    }
-    if ((aClass) && ([aClass isSubclassOfClass:[UITableViewCell class]] == NO) && ([UITableViewCell class]) != aClass) {
-        [NSException raise:NSInvalidArgumentException format:@"must pass a class of kind %@", [UITableViewCell class]];
-    }
-    [self _registerThing:aClass asNib:NO forViewType:1 withReuseIdentifer:identifier];
-}
-- (void)registerNib:(nullable UINib *)nib forCellReuseIdentifier:(NSString *)identifier
-{
-    if ([identifier length] == 0) {
-        [NSException raise:NSInvalidArgumentException format:@"must pass a valid reuse identifier to -[UITableView %s]",__func__];
-    }
-    [self _registerThing:nib asNib:YES forViewType:1 withReuseIdentifer:identifier];
-}
-- (UITableViewHeaderFooterView *)headerViewForSection:(NSInteger)section
-{
-   return [self _visibleHeaderViewForSection:section];
-}
-- (UITableViewHeaderFooterView *)footerViewForSection:(NSInteger)section
-{
-    return nil;
-}
+
+
+
 
 
 - (NSIndexPath *)indexPathForCell:(UITableViewCell *)cell
@@ -653,17 +722,5 @@
         return _reusableTableCells;
     }
 }
-
-- (UITableViewHeaderFooterView *)_visibleHeaderViewForSection:(NSInteger)section
-{
-    return nil;
-}
-
-
-
-
-
-
-
 
 @end
