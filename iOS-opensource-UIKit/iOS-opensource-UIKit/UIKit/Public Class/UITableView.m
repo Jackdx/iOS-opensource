@@ -11,7 +11,14 @@
 
 @interface DUITableView()
 {
-    UITableViewRowData *_rowData;
+    NSMutableArray *_visibleCells; // 可见的cells数组，元素为UITableViewCell
+    NSMutableArray *_selectedIndexPaths; // 选中的IndexPaths数组，元素为NSIndexPath
+    
+    UITableViewRowData *_rowData; // 此类的作用是把数据处理封装起来
+    
+    UIView *_tableHeaderBackgroundView; // tableHeader的BackgroundView
+    
+    
     NSMutableDictionary *_headerFooterClassDict;
     NSMutableDictionary *_headerFooterNibMap;
     
@@ -22,9 +29,9 @@
     NSMutableDictionary *_reusableTableCells;
     
     struct {
-        unsigned int dataSourceNumberOfRowsInSection : 1;
+        unsigned int dataSourceNumberOfRowsInSection : 1; // 对应方法 - (NSInteger)numberOfRowsInSection:(NSInteger)section;
         unsigned int dataSourceCellForRow : 1;
-        unsigned int dataSourceNumberOfSectionsInTableView : 1;
+        unsigned int dataSourceNumberOfSectionsInTableView : 1; // 对应属性numberOfSections
         unsigned int dataSourceTitleForHeaderInSection : 1;
         unsigned int dataSourceTitleForFooterInSection : 1;
         unsigned int dataSourceDetailTextForHeaderInSection : 1;
@@ -116,8 +123,8 @@
         unsigned int delegateTemplateLayoutCell : 1;
         unsigned int delegateWillLayoutCellUsingTemplateLayoutCell : 1;
         unsigned int delegateWasNonNil : 1;
-        unsigned int style : 1;
-        unsigned int separatorStyle : 3;
+        unsigned int style : 1;  // 已使用
+        unsigned int separatorStyle : 3;  // 已使用
         unsigned int wasEditing : 1;
         unsigned int isEditing : 1;
         unsigned int isEditingAllRows : 1;
@@ -203,39 +210,261 @@
     int _tableReloadingSuspendedCount;
 }
 
+
+
+
 @end
 
 @implementation DUITableView
 @synthesize delegate = _delegate;
 
-- (void)reloadData
-{
-    
-}
+#pragma mark - public func
 - (instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style
 {
+    // 待实现
     self = [super initWithFrame:frame];
     if (self) {
         
     }
     return self;
 }
+
+- (void)reloadData
+{
+    
+}
+- (NSInteger)numberOfRowsInSection:(NSInteger)section
+{
+    [self _ensureRowDataIsLoaded];
+    return [_rowData numberOfRowsInSection:section];
+}
+// dequeue模块
+- (UITableViewHeaderFooterView *)dequeueReusableHeaderFooterViewWithIdentifier:(NSString *)identifier
+{
+    return (UITableViewHeaderFooterView *)[self _dequeueReusableViewOfType:2 withIdentifier:identifier];
+}
+- (nullable __kindof UITableViewCell *)dequeueReusableCellWithIdentifier:(NSString *)identifier
+{
+    return (__kindof UITableViewCell *)[self _dequeueReusableViewOfType:1 withIdentifier:identifier];
+}
+- (__kindof UITableViewCell *)dequeueReusableCellWithIdentifier:(NSString *)identifier forIndexPath:(NSIndexPath *)indexPath
+{
+    // 待实现
+    /*
+    UITableViewCell *dequeueReusableCell = [self dequeueReusableCellWithIdentifier:identifier];
+    if (dequeueReusableCell == nil) {
+        // NSAssertionHandler直接崩溃
+    }
+    [_delegate tableView:self heightForRowAtIndexPath:indexPath];
+    return dequeueReusableCell;
+     */
+    return nil;
+}
+- (void)insertSections:(NSIndexSet *)sections withRowAnimation:(UITableViewRowAnimation)animation
+{
+    [self _updateSections:sections updateAction:0 withRowAnimation:animation headerFooterOnly:NO];
+}
+- (void)deleteSections:(NSIndexSet *)sections withRowAnimation:(UITableViewRowAnimation)animation
+{
+    [self _updateSections:sections updateAction:1 withRowAnimation:animation headerFooterOnly:NO];
+}
+- (void)reloadSections:(NSIndexSet *)sections withRowAnimation:(UITableViewRowAnimation)animation
+{
+    [self _updateSections:sections updateAction:2 withRowAnimation:animation headerFooterOnly:NO];
+}
+- (void)insertRowsAtIndexPaths:(NSArray<NSIndexPath *> *)indexPaths withRowAnimation:(UITableViewRowAnimation)animation
+{
+    [self _updateRowsAtIndexPaths:indexPaths updateAction:0 withRowAnimation:animation];
+}
+- (void)deleteRowsAtIndexPaths:(NSArray<NSIndexPath *> *)indexPaths withRowAnimation:(UITableViewRowAnimation)animation
+{
+    [self _updateRowsAtIndexPaths:indexPaths updateAction:1 withRowAnimation:animation];
+}
+- (void)reloadRowsAtIndexPaths:(NSArray<NSIndexPath *> *)indexPaths withRowAnimation:(UITableViewRowAnimation)animation
+{
+    [self _updateRowsAtIndexPaths:indexPaths updateAction:2 withRowAnimation:animation];
+}
+- (void)reloadSectionIndexTitles
+{
+    // 待实现
+}
+#pragma mark - rewrite func
 - (instancetype)initWithFrame:(CGRect)frame
 {
     return [self initWithFrame:frame style:UITableViewStylePlain];
 }
-- (void)setDataSource:(id<UITableViewDataSource>)newSource
+
+
+#pragma mark - protocol func
+
+#pragma mark - private func
+- (void)_suspendReloads
 {
-    _dataSource = newSource;
+    _tableReloadingSuspendedCount = _tableReloadingSuspendedCount + 1;
+}
+- (id)_templateLayoutCellForCellsWithReuseIdentifier:(NSString *)identifier
+{
+    // 待实现
+    return nil;
+}
+
+- (void)_setupDefaultHeights
+{
+    // 待实现
+}
+- (void)_reloadSectionHeaderFooters:(id)arg1 withRowAnimation:(UITableViewRowAnimation)animation
+{
+    [self _updateSections:arg1 updateAction:2 withRowAnimation:animation headerFooterOnly:YES];
+}
+- (void)_updateRowsAtIndexPaths:(id)arg1 updateAction:(int)arg2 withRowAnimation:(int)arg3
+{
+    // 待实现
+}
+- (void)_updateSections:(id)arg1 updateAction:(int)arg2 withRowAnimation:(int)arg3 headerFooterOnly:(BOOL)arg4
+{
+    // 待实现
+}
+- (void)_addContentSubview:(UIView *)contentSubview atBack:(BOOL)atBack
+{
+    // 待实现
+}
+- (void)_setupCellAnimations
+{
+    // 待实现
+    /*
+    [self _updateVisibleCellsNow:NO isRecursive:NO];
+    [self _suspendReloads];
+     */
+}
+// 作用：真正的注册方法
+- (void)_registerThing:(id)arg1 asNib:(BOOL)asNib forViewType:(int)type withReuseIdentifer:(NSString *)identifier
+{
+    // 待实现
+    /*
+    NSMutableDictionary *clsMap = [self _classMapForType:type];
+    NSMutableDictionary *nibMap = [self _nibMapForType:type];
+    if (asNib) {
+        clsMap = [self _nibMapForType:type];
+        nibMap = [self _classMapForType:type];
+    }
+    [nibMap removeObjectForKey:identifier];
+    if (arg1) {
+        [clsMap setObject:arg1 forKey:identifier];
+    }
+    else
+    {
+        [clsMap removeObjectForKey:identifier];
+    }
+     */
+    
+}
+- (void)_configureBackgroundView
+{
+    // 待实现
+}
+- (UITableViewRowData *)_rowData
+{
+    return _rowData;
+}
+- (void)_updateVisibleCellsNow:(BOOL)arg1 isRecursive:(BOOL)arg2
+{
+    // 待实现
+}
+- (void)_updateVisibleCellsImmediatelyIfNecessary
+{
+    // 待实现
+    // 作用：如果有必要，立即更新可见的cells
+}
+- (NSArray<UITableViewCell *> *)_visibleCells
+{
+    [self _updateVisibleCellsImmediatelyIfNecessary];
+    return [_visibleCells copy];
+}
+- (void)_reloadDataIfNeeded
+{
+    // 待实现
+    /*
+    if ((_tableFlags.needsReload == 0) && (_tableReloadingSuspendedCount == 0)) {
+        [self reloadData];
+    }
+     */
+}
+
+- (void)_ensureRowDataIsLoaded
+{
+    // 作用：保证RowData加载
+    if (_rowData == nil) {
+        [self _updateRowData];
+    }
+}
+// 作用：更新RowData
+- (void)_updateRowData
+{
+    // 待实现
+    /*
+    if (_rowData == nil) {
+        _rowData = [[UITableViewRowData alloc] initWithTableView:self];
+    }
+     */
+}
+// 作用：真正的复用方法
+- (UIView *)_dequeueReusableViewOfType:(int)type withIdentifier:(NSString *)identifier
+{
+    // 待实现
+    /*
+     UIView *dequeueReusableView = [[self _cellReuseMapForType:type] objectForKey:identifier];
+     return dequeueReusableView;
+     */
+    return nil;
+}
+#pragma mark - need obvious realize set-get func
+- (UIView *)_tableHeaderBackgroundView
+{
+    return _tableHeaderBackgroundView;
+}
+- (NSArray<NSIndexPath *> *)indexPathsForVisibleRows
+{
+    // 待实现
+    return nil;
+}
+- (NSInteger)numberOfSections
+{
+    [self _ensureRowDataIsLoaded];
+    return [_rowData numberOfSections];
+}
+- (NSIndexPath *)indexPathForSelectedRow
+{
+    // 待实现
+    return nil;
+}
+- (NSArray<NSIndexPath *> *)indexPathsForSelectedRows
+{
+    if (_selectedIndexPaths.count) {
+        return [_selectedIndexPaths copy];
+    }
+    return nil;
+}
+- (NSArray<UITableViewCell *> *)visibleCells
+{
+    return [self _visibleCells];
+}
+- (void)setDataSource:(id<UITableViewDataSource>)dataSource
+{
+    // 待实现
+    /*
+    _dataSource = dataSource;
     _tableFlags.dataSourceNumberOfSectionsInTableView = [_dataSource respondsToSelector:@selector(numberOfSectionsInTableView:)];
     _tableFlags.dataSourceTitleForHeaderInSection = [_dataSource respondsToSelector:@selector(tableView:titleForHeaderInSection:)];
     _tableFlags.dataSourceTitleForFooterInSection = [_dataSource respondsToSelector:@selector(tableView:titleForFooterInSection:)];
     _tableFlags.dataSourceCommitEditingStyle = [_dataSource respondsToSelector:@selector(tableView:commitEditingStyle:forRowAtIndexPath:)];
     _tableFlags.dataSourceCanEditRow = [_dataSource respondsToSelector:@selector(tableView:canEditRowAtIndexPath:)];
+     */
     // 其他UITableViewDataSource协议略
 }
 - (void)setDelegate:(id<UITableViewDelegate>)newDelegate
 {
+    // 待实现
+    /*
     [super setDelegate:newDelegate];
     _tableFlags.delegateHeightForRow = [newDelegate respondsToSelector:@selector(tableView:heightForRowAtIndexPath:)];
     _tableFlags.delegateHeightForHeader = [newDelegate respondsToSelector:@selector(tableView:heightForHeaderInSection:)];
@@ -250,46 +479,74 @@
     _tableFlags.delegateDidEndEditing = [newDelegate respondsToSelector:@selector(tableView:didEndEditingRowAtIndexPath:)];
     _tableFlags.delegateTitleForDeleteConfirmationButtonForRowAtIndexPath = [newDelegate respondsToSelector:@selector(tableView:titleForDeleteConfirmationButtonForRowAtIndexPath:)];
     // 其他UITableViewDelegate协议略
+     */
+}
+- (void)setTableHeaderView:(UIView *)tableHeaderView
+{
+    // 待实现
+}
+- (void)setTableFooterView:(UIView *)tableFooterView
+{
+    // 待实现
 }
 
+- (UITableViewStyle)style
+{
+    return _tableFlags.style;
+}
+- (UITableViewCellSeparatorStyle)separatorStyle
+{
+    return _tableFlags.separatorStyle;
+}
+- (void)setSeparatorStyle:(UITableViewCellSeparatorStyle)separatorStyle
+{
+    // 待实现
+}
+- (void)setSeparatorColor:(UIColor *)separatorColor
+{
+    // 待实现
+}
 - (void)setBackgroundView:(UIView *)backgroundView
 {
+   // 待实现
+    /*
     if (_backgroundView) {
         [_backgroundView removeFromSuperview];
         _backgroundView = backgroundView;
         [self _configureBackgroundView];
     }
+     */
 }
 
-- (void)insertSections:(NSIndexSet *)sections withRowAnimation:(UITableViewRowAnimation)animation
+- (UIEdgeInsets)separatorInset
 {
-    [self _updateSections:sections updateAction:0 withRowAnimation:animation headerFooterOnly:NO];
+    // 待实现
+    return UIEdgeInsetsZero;
 }
-- (void)deleteSections:(NSIndexSet *)sections withRowAnimation:(UITableViewRowAnimation)animation
+- (void)setSeparatorInset:(UIEdgeInsets)separatorInset
 {
-    [self _updateSections:sections updateAction:1 withRowAnimation:animation headerFooterOnly:NO];
-}
-- (void)reloadSections:(NSIndexSet *)sections withRowAnimation:(UITableViewRowAnimation)animation
-{
-    [self _updateSections:sections updateAction:2 withRowAnimation:animation headerFooterOnly:NO];
-}
-- (void)_reloadSectionHeaderFooters:(id)arg1 withRowAnimation:(UITableViewRowAnimation)animation
-{
-    [self _updateSections:arg1 updateAction:2 withRowAnimation:animation headerFooterOnly:YES];
+    // 待实现
 }
 
-- (void)insertRowsAtIndexPaths:(NSArray<NSIndexPath *> *)indexPaths withRowAnimation:(UITableViewRowAnimation)animation
-{
-    [self _updateRowsAtIndexPaths:indexPaths updateAction:0 withRowAnimation:animation];
-}
-- (void)deleteRowsAtIndexPaths:(NSArray<NSIndexPath *> *)indexPaths withRowAnimation:(UITableViewRowAnimation)animation
-{
-    [self _updateRowsAtIndexPaths:indexPaths updateAction:1 withRowAnimation:animation];
-}
-- (void)reloadRowsAtIndexPaths:(NSArray<NSIndexPath *> *)indexPaths withRowAnimation:(UITableViewRowAnimation)animation
-{
-    [self _updateRowsAtIndexPaths:indexPaths updateAction:2 withRowAnimation:animation];
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #pragma mark - register模块
 - (void)registerClass:(nullable Class)aClass forHeaderFooterViewReuseIdentifier:(NSString *)identifier
 {
@@ -333,59 +590,14 @@
 {
     return nil;
 }
-#pragma mark - dequeue模块
-- (UITableViewHeaderFooterView *)dequeueReusableHeaderFooterViewWithIdentifier:(NSString *)identifier
-{
-    return (UITableViewHeaderFooterView *)[self _dequeueReusableViewOfType:2 withIdentifier:identifier];
-}
-- (nullable __kindof UITableViewCell *)dequeueReusableCellWithIdentifier:(NSString *)identifier
-{
-    return (__kindof UITableViewCell *)[self _dequeueReusableViewOfType:1 withIdentifier:identifier];
-}
-- (__kindof UITableViewCell *)dequeueReusableCellWithIdentifier:(NSString *)identifier forIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *dequeueReusableCell = [self dequeueReusableCellWithIdentifier:identifier];
-    if (dequeueReusableCell == nil) {
-        // NSAssertionHandler直接崩溃
-    }
-    [_delegate tableView:self heightForRowAtIndexPath:indexPath];
-    return dequeueReusableCell;
-}
 
-- (NSInteger)numberOfSections
-{
-    [self _ensureRowDataIsLoaded];
-    return [_rowData numberOfSections];
-}
-- (NSInteger)numberOfRowsInSection:(NSInteger)section
-{
-    [self _ensureRowDataIsLoaded];
-    return [_rowData numberOfRowsInSection:section];
-}
+
 - (NSIndexPath *)indexPathForCell:(UITableViewCell *)cell
 {
     return nil;
 }
-#pragma mark - private fun
-// 作用：真正的注册方法
-- (void)_registerThing:(id)arg1 asNib:(BOOL)asNib forViewType:(int)type withReuseIdentifer:(NSString *)identifier
-{
-    NSMutableDictionary *clsMap = [self _classMapForType:type];
-    NSMutableDictionary *nibMap = [self _nibMapForType:type];
-    if (asNib) {
-        clsMap = [self _nibMapForType:type];
-        nibMap = [self _classMapForType:type];
-    }
-    [nibMap removeObjectForKey:identifier];
-    if (arg1) {
-        [clsMap setObject:arg1 forKey:identifier];
-    }
-    else
-    {
-        [clsMap removeObjectForKey:identifier];
-    }
-    
-}
+
+
 // 作用：根据type返回class字典
 - (NSMutableDictionary *)_classMapForType:(int)type
 {
@@ -441,75 +653,17 @@
         return _reusableTableCells;
     }
 }
-- (UIView *)_dequeueReusableViewOfType:(int)type withIdentifier:(NSString *)identifier
-{
-    UIView *dequeueReusableView = [[self _cellReuseMapForType:type] objectForKey:identifier];
-    
-    return dequeueReusableView;
-}
+
 - (UITableViewHeaderFooterView *)_visibleHeaderViewForSection:(NSInteger)section
 {
     return nil;
 }
 
-// 作用：保证RowData加载
-- (void)_ensureRowDataIsLoaded
-{
-    if (_rowData == nil) {
-        [self _updateRowData];
-    }
-}
-// 作用：更新RowData
-- (void)_updateRowData
-{
-    if (_rowData == nil) {
-        _rowData = [[UITableViewRowData alloc] initWithTableView:self];
-    }
-    
-}
-// 作用：如果有必要，立即更新可见的cells
-- (void)_updateVisibleCellsImmediatelyIfNecessary
-{
-    
-}
-- (void)_updateVisibleCellsNow:(BOOL)arg1 isRecursive:(BOOL)arg2
-{
-    
-}
 
-- (void)_reloadDataIfNeeded
-{
-    if ((_tableFlags.needsReload == 0) && (_tableReloadingSuspendedCount == 0)) {
-        [self reloadData];
-    }
-}
-- (void)_configureBackgroundView
-{
-    
-}
-- (void)_addContentSubview:(UIView *)contentSubview atBack:(BOOL)atBack
-{
-    
-}
-- (id)_templateLayoutCellForCellsWithReuseIdentifier:(NSString *)identifier
-{
-    return nil;
-}
-- (void)_setupCellAnimations
-{
-    [self _updateVisibleCellsNow:NO isRecursive:NO];
-    [self _suspendReloads];
-}
-- (void)_suspendReloads
-{
-    _tableReloadingSuspendedCount = _tableReloadingSuspendedCount + 1;
-}
-- (void)_updateSections:(id)arg1 updateAction:(int)arg2 withRowAnimation:(int)arg3 headerFooterOnly:(BOOL)arg4
-{
-    
-}
-- (void)_updateRowsAtIndexPaths:(id)arg1 updateAction:(int)arg2 withRowAnimation:(int)arg3
-{
-    
-}
+
+
+
+
+
+
 @end

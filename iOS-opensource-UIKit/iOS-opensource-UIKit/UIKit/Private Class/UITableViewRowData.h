@@ -88,7 +88,7 @@
 - (void)moveRowAtIndexPathFrom:(id)arg1 toIndexPath:(id)arg2;
 - (int)numberOfRows;
 - (int)numberOfRowsBeforeSection:(int)arg1;
-- (int)numberOfRowsInSection:(int)arg1;
+- (NSInteger)numberOfRowsInSection:(NSInteger)section;
 - (int)numberOfSections;
 - (float)offsetForSection:(id)arg1;
 - (CGRect)rectForFooterInSection:(int)arg1 heightCanBeGuessed:(BOOL)arg2;
