@@ -232,7 +232,7 @@
 
 - (void)reloadData
 {
-    
+    // 待实现
 }
 - (NSInteger)numberOfRowsInSection:(NSInteger)section
 {
@@ -461,7 +461,11 @@
 }
 - (void)_configureBackgroundView
 {
-    // 待实现
+    if (_backgroundView) {
+        [_backgroundView setAutoresizingMask:12];
+        _backgroundView.frame = self.bounds;
+        [self _addContentSubview:_backgroundView atBack:YES];
+    }
 }
 - (UITableViewRowData *)_rowData
 {
