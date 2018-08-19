@@ -222,10 +222,15 @@
 #pragma mark - public func
 - (instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style
 {
-    // 待实现
     self = [super initWithFrame:frame];
     if (self) {
-        
+        if (_tableFlags.usingCustomBackgroundView) {
+            _backgroundView = [self _defaultBackgroundView];
+        }
+        [self setAllowsSelection:YES];
+        [self setMultipleTouchEnabled:NO];
+        [self _setupDefaultHeights];
+        [self _scheduleAdjustExtraSeparators];
     }
     return self;
 }
@@ -248,19 +253,7 @@
 {
     return (__kindof UITableViewCell *)[self _dequeueReusableViewOfType:1 withIdentifier:identifier];
 }
-- (__kindof UITableViewCell *)dequeueReusableCellWithIdentifier:(NSString *)identifier forIndexPath:(NSIndexPath *)indexPath
-{
-    // 待实现
-    /*
-    UITableViewCell *dequeueReusableCell = [self dequeueReusableCellWithIdentifier:identifier];
-    if (dequeueReusableCell == nil) {
-        // NSAssertionHandler直接崩溃
-    }
-    [_delegate tableView:self heightForRowAtIndexPath:indexPath];
-    return dequeueReusableCell;
-     */
-    return nil;
-}
+
 - (void)insertSections:(NSIndexSet *)sections withRowAnimation:(UITableViewRowAnimation)animation
 {
     [self _updateSections:sections updateAction:0 withRowAnimation:animation headerFooterOnly:NO];
@@ -287,7 +280,8 @@
 }
 - (void)reloadSectionIndexTitles
 {
-    // 待实现
+    _tableFlags.sectionIndexTitlesLoaded = YES;
+    [self _updateIndex];
 }
 - (UITableViewHeaderFooterView *)headerViewForSection:(NSInteger)section
 {
@@ -377,6 +371,19 @@
     return YES;
 }
 #pragma mark - private func
+- (void)_updateIndex
+{
+    // 待实现
+}
+- (void)_scheduleAdjustExtraSeparators
+{
+    // 待实现
+}
+- (UIView *)_defaultBackgroundView
+{
+    // 待实现
+    return nil;
+}
 - (void)_deselectRowAtIndexPath:(NSIndexPath *)indexPath animated:(BOOL)animated notifyDelegate:(BOOL)notify
 {
     // 待实现
