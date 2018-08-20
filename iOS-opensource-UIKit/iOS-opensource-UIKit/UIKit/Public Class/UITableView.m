@@ -9,6 +9,7 @@
 #import "UITableView.h"
 #import "UITableViewRowData.h"
 #import "UIGestureRecognizerDelegatePrivate.h"
+#import "UIScrollView+pri.h"
 
 @interface DUITableView() <UIScrollViewDelegate,UIGestureRecognizerDelegatePrivate>
 {
@@ -19,15 +20,14 @@
     
     UIView *_tableHeaderBackgroundView; // tableHeader的BackgroundView
     
+    NSMutableDictionary *_headerFooterClassDict; // headerFooterClass字典，键是identifier，值为某个特定的继承UITableViewHeaderFooterView的子类的类名
+    NSMutableDictionary *_headerFooterNibMap;// headerFooterNib字典，键是identifier，值为某个特定的继承UITableViewHeaderFooterView的子类的nib
     
-    NSMutableDictionary *_headerFooterClassDict;
-    NSMutableDictionary *_headerFooterNibMap;
+    NSMutableDictionary *_cellClassDict;// cellClass字典，键是identifier，值为某个特定的继承UITableViewCell的子类的类名
+    NSMutableDictionary *_nibMap;// cellNib字典，键是identifier，值为某个特定的继承UITableViewCell的子类的nib
     
-    NSMutableDictionary *_cellClassDict;
-    NSMutableDictionary *_nibMap;
-    
-    NSMutableDictionary *_reusableHeaderFooterViews;
-    NSMutableDictionary *_reusableTableCells;
+    NSMutableDictionary *_reusableHeaderFooterViews; // UITableViewHeaderFooterView的复用字典，键为identifier，值为UITableViewHeaderFooterView对象
+    NSMutableDictionary *_reusableTableCells; // UITableViewCell的复用字典，键为identifier，值为UITableViewCell对象
     
     struct {
         unsigned int dataSourceNumberOfRowsInSection : 1; // 对应方法 - (NSInteger)numberOfRowsInSection:(NSInteger)section;
@@ -331,6 +331,11 @@
 {
     [self _deselectRowAtIndexPath:indexPath animated:animated notifyDelegate:NO];
 }
+- (NSIndexPath *)indexPathForCell:(UITableViewCell *)cell
+{
+    // 待实现
+    return nil;
+}
 #pragma mark - rewrite func
 - (instancetype)initWithFrame:(CGRect)frame
 {
@@ -338,7 +343,9 @@
 }
 - (void)layoutSubviews
 {
-    // 待实现
+    [self _reloadDataIfNeeded];
+    [self _updateBackgroundView];
+    [self _updateGradientMaskView];
 }
 
 
@@ -371,6 +378,68 @@
     return YES;
 }
 #pragma mark - private func
+// 作用：根据type返回class字典
+- (NSMutableDictionary *)_classMapForType:(int)type
+{
+    if (type == 2) {  // UITableViewHeaderFooterView
+        if (_headerFooterClassDict == nil) {
+            _headerFooterClassDict = [[NSMutableDictionary alloc] init];
+        }
+        return _headerFooterClassDict;
+    }
+    else
+    {
+        if (type != 1) {
+            // NSAssertionHandler 报错。 过滤掉不合法的type
+        }
+        if (_cellClassDict == nil) {
+            _cellClassDict = [[NSMutableDictionary alloc] init];
+        }
+        return _cellClassDict;
+    }
+}
+- (NSMutableDictionary *)_nibMapForType:(int)type
+{
+    if (type == 2) {  // UITableViewHeaderFooterView
+        if (_headerFooterNibMap == nil) {
+            _headerFooterNibMap = [[NSMutableDictionary alloc] init];
+        }
+        return _headerFooterNibMap;
+    }
+    else
+    {
+        if (type != 1) {
+            // NSAssertionHandler 报错  过滤掉不合法的type
+        }
+        if (_nibMap == nil) {
+            _nibMap = [[NSMutableDictionary alloc] init];
+        }
+        return _nibMap;
+    }
+}
+- (NSMutableDictionary *)_cellReuseMapForType:(int)type
+{
+    if (type == 2) {  // UITableViewHeaderFooterView
+        if (_reusableHeaderFooterViews == nil) {
+            _reusableHeaderFooterViews = [[NSMutableDictionary alloc] init];
+        }
+        return _reusableHeaderFooterViews;
+    }
+    else
+    {
+        // 作用为过滤，此方法type取值只有2个，1和2。如果不是这2种，就报错 unknown view type
+        // 后面为了减少干扰阅读主干实现代码。所有具体的报错实现代码均去除
+        if (type != 1) {
+            // NSAssertionHandler 报错
+            [[NSAssertionHandler currentHandler] handleFailureInMethod:_cmd object:self file:@"/BuildRoot/Library/Caches/com.apple.xbs/Sources/UIKit_Sim/UIKit-3512.60.7/UITableView.m" lineNumber:83 description:@"attempt to access view reuse map for unknown view type"];
+        }
+        return _reusableTableCells;
+    }
+}
+- (void)_updateBackgroundView
+{
+    // 待实现
+}
 - (void)_updateIndex
 {
     // 待实现
@@ -445,26 +514,22 @@
      */
 }
 // 作用：真正的注册方法
-- (void)_registerThing:(id)arg1 asNib:(BOOL)asNib forViewType:(int)type withReuseIdentifer:(NSString *)identifier
+- (void)_registerThing:(id)classOrNib asNib:(BOOL)asNib forViewType:(int)type withReuseIdentifer:(NSString *)identifer
 {
-    // 待实现
-    /*
-    NSMutableDictionary *clsMap = [self _classMapForType:type];
-    NSMutableDictionary *nibMap = [self _nibMapForType:type];
+    NSMutableDictionary *usedMap = [self _classMapForType:type];
+    NSMutableDictionary *unusedMap = [self _nibMapForType:type];
     if (asNib) {
-        clsMap = [self _nibMapForType:type];
-        nibMap = [self _classMapForType:type];
+        usedMap = [self _nibMapForType:type];
+        unusedMap = [self _classMapForType:type];
     }
-    [nibMap removeObjectForKey:identifier];
-    if (arg1) {
-        [clsMap setObject:arg1 forKey:identifier];
+    [unusedMap removeObjectForKey:identifer];
+    if (classOrNib) {
+        [usedMap setObject:classOrNib forKey:identifer];
     }
     else
     {
-        [clsMap removeObjectForKey:identifier];
+        [usedMap removeObjectForKey:identifer];
     }
-     */
-    
 }
 - (void)_configureBackgroundView
 {
@@ -494,17 +559,13 @@
 }
 - (void)_reloadDataIfNeeded
 {
-    // 待实现
-    /*
-    if ((_tableFlags.needsReload == 0) && (_tableReloadingSuspendedCount == 0)) {
+    if ((_tableFlags.needsReload) && (_tableReloadingSuspendedCount == 0)) {
         [self reloadData];
     }
-     */
 }
 
-- (void)_ensureRowDataIsLoaded
+- (void)_ensureRowDataIsLoaded  // 作用：保证RowData加载
 {
-    // 作用：保证RowData加载
     if (_rowData == nil) {
         [self _updateRowData];
     }
@@ -646,92 +707,6 @@
 - (void)setSeparatorInset:(UIEdgeInsets)separatorInset
 {
     // 待实现
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-- (NSIndexPath *)indexPathForCell:(UITableViewCell *)cell
-{
-    return nil;
-}
-
-
-// 作用：根据type返回class字典
-- (NSMutableDictionary *)_classMapForType:(int)type
-{
-    if (type == 2) {  // UITableViewHeaderFooterView
-        if (_headerFooterClassDict == nil) {
-            _headerFooterClassDict = [[NSMutableDictionary alloc] init];
-        }
-        return _headerFooterClassDict;
-    }
-    else
-    {
-        if (type != 1) {
-            // NSAssertionHandler 报错
-        }
-        if (_cellClassDict == nil) {
-            _cellClassDict = [[NSMutableDictionary alloc] init];
-        }
-        return _cellClassDict;
-    }
-}
-- (NSMutableDictionary *)_nibMapForType:(int)type
-{
-    if (type == 2) {  // UITableViewHeaderFooterView
-        if (_headerFooterNibMap == nil) {
-            _headerFooterNibMap = [[NSMutableDictionary alloc] init];
-        }
-        return _headerFooterNibMap;
-    }
-    else
-    {
-        if (type != 1) {
-            // NSAssertionHandler 报错
-        }
-        if (_nibMap == nil) {
-            _nibMap = [[NSMutableDictionary alloc] init];
-        }
-        return _nibMap;
-    }
-}
-- (NSMutableDictionary *)_cellReuseMapForType:(int)type
-{
-    if (type == 2) {  // UITableViewHeaderFooterView
-        if (_reusableHeaderFooterViews == nil) {
-            _reusableHeaderFooterViews = [[NSMutableDictionary alloc] init];
-        }
-        return _reusableHeaderFooterViews;
-    }
-    else
-    {
-        if (type != 1) {
-            // NSAssertionHandler 报错
-        }
-        return _reusableTableCells;
-    }
 }
 
 @end

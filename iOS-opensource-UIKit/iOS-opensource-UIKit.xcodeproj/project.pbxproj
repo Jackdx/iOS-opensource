@@ -24,6 +24,8 @@
 		BB3E6018211A903A0073F367 /* UITableViewRowData.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3E6016211A903A0073F367 /* UITableViewRowData.m */; };
 		BB3E601B211B0E970073F367 /* UIViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = BB3E6019211B0E970073F367 /* UIViewController.h */; };
 		BB3E601C211B0E970073F367 /* UIViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3E601A211B0E970073F367 /* UIViewController.m */; };
+		BB45DA03212A56E800761FBB /* UIScrollView+pri.h in Headers */ = {isa = PBXBuildFile; fileRef = BB45DA01212A56E800761FBB /* UIScrollView+pri.h */; };
+		BB45DA04212A56E800761FBB /* UIScrollView+pri.m in Sources */ = {isa = PBXBuildFile; fileRef = BB45DA02212A56E800761FBB /* UIScrollView+pri.m */; };
 		BB5A451621035CB100C1D6C1 /* UITableView.h in Headers */ = {isa = PBXBuildFile; fileRef = BB5A451421035CB100C1D6C1 /* UITableView.h */; };
 		BB5A451721035CB100C1D6C1 /* UITableView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB5A451521035CB100C1D6C1 /* UITableView.m */; };
 		BB5A451A2103625400C1D6C1 /* UIImagePickerController.h in Headers */ = {isa = PBXBuildFile; fileRef = BB5A45182103625400C1D6C1 /* UIImagePickerController.h */; };
@@ -64,6 +66,8 @@
 		BB3E6016211A903A0073F367 /* UITableViewRowData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UITableViewRowData.m; sourceTree = "<group>"; };
 		BB3E6019211B0E970073F367 /* UIViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIViewController.h; sourceTree = "<group>"; };
 		BB3E601A211B0E970073F367 /* UIViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIViewController.m; sourceTree = "<group>"; };
+		BB45DA01212A56E800761FBB /* UIScrollView+pri.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+pri.h"; sourceTree = "<group>"; };
+		BB45DA02212A56E800761FBB /* UIScrollView+pri.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+pri.m"; sourceTree = "<group>"; };
 		BB5A451421035CB100C1D6C1 /* UITableView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UITableView.h; sourceTree = "<group>"; };
 		BB5A451521035CB100C1D6C1 /* UITableView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UITableView.m; sourceTree = "<group>"; };
 		BB5A45182103625400C1D6C1 /* UIImagePickerController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIImagePickerController.h; sourceTree = "<group>"; };
@@ -172,6 +176,8 @@
 				BB390AE521244DAF00983969 /* UIAlertControllerStackManager.h */,
 				BB390AE621244DAF00983969 /* UIAlertControllerStackManager.m */,
 				BB8DB07321281AFF009924BD /* UIGestureRecognizerDelegatePrivate.h */,
+				BB45DA01212A56E800761FBB /* UIScrollView+pri.h */,
+				BB45DA02212A56E800761FBB /* UIScrollView+pri.m */,
 			);
 			path = "Private Class";
 			sourceTree = "<group>";
@@ -218,6 +224,7 @@
 				BB5A451A2103625400C1D6C1 /* UIImagePickerController.h in Headers */,
 				BB35474C2103385C00B97505 /* iOS_opensource_UIKit.h in Headers */,
 				BB0DDC40211D2A16002C83BB /* UICollectionViewData.h in Headers */,
+				BB45DA03212A56E800761FBB /* UIScrollView+pri.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -302,6 +309,7 @@
 				BB3E601C211B0E970073F367 /* UIViewController.m in Sources */,
 				BB354785210355F500B97505 /* UITableViewSection.m in Sources */,
 				BBDDDA892121A35C003C2B9E /* UITableViewRowAction.m in Sources */,
+				BB45DA04212A56E800761FBB /* UIScrollView+pri.m in Sources */,
 				BBDDA43921213DE80086587E /* UIView.m in Sources */,
 				BB5A451721035CB100C1D6C1 /* UITableView.m in Sources */,
 				BB5A451B2103625400C1D6C1 /* UIImagePickerController.m in Sources */,
