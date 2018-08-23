@@ -29,6 +29,9 @@
     NSMutableDictionary *_reusableHeaderFooterViews; // UITableViewHeaderFooterView的复用字典，键为identifier，值为UITableViewHeaderFooterView对象
     NSMutableDictionary *_reusableTableCells; // UITableViewCell的复用字典，键为identifier，值为UITableViewCell对象
     
+    CFDictionaryRef *_visibleFooterViews; // 可见的FooterViews
+    CFDictionaryRef *_visibleHeaderViews; // 可见的HeaderViews
+    
     struct {
         unsigned int dataSourceNumberOfRowsInSection : 1; // 对应方法 - (NSInteger)numberOfRowsInSection:(NSInteger)section;
         unsigned int dataSourceCellForRow : 1;
@@ -224,7 +227,7 @@
 {
     self = [super initWithFrame:frame];
     if (self) {
-        if (_tableFlags.usingCustomBackgroundView) {
+        if (_tableFlags.usingCustomBackgroundView == 0) {
             _backgroundView = [self _defaultBackgroundView];
         }
         [self setAllowsSelection:YES];
@@ -378,6 +381,10 @@
     return YES;
 }
 #pragma mark - private func
+- (void)_updateContentSize
+{
+    // 待实现
+}
 // 作用：根据type返回class字典
 - (NSMutableDictionary *)_classMapForType:(int)type
 {
@@ -446,7 +453,9 @@
 }
 - (void)_scheduleAdjustExtraSeparators
 {
-    // 待实现
+    if (_tableFlags.needToAdjustExtraSeparators) {
+        [self setNeedsLayout];
+    }
 }
 - (UIView *)_defaultBackgroundView
 {
@@ -543,14 +552,18 @@
 {
     return _rowData;
 }
-- (void)_updateVisibleCellsNow:(BOOL)arg1 isRecursive:(BOOL)arg2
+- (void)_updateVisibleCellsNow:(BOOL)now isRecursive:(BOOL)recursive
 {
     // 待实现
 }
 - (void)_updateVisibleCellsImmediatelyIfNecessary
 {
-    // 待实现
     // 作用：如果有必要，立即更新可见的cells
+    if (_tableFlags.scheduledUpdateVisibleCells) {
+        if (_dataSource) {
+            [self _updateVisibleCellsNow:YES isRecursive:NO];
+        }
+    }
 }
 - (NSArray<UITableViewCell *> *)_visibleCells
 {
@@ -668,7 +681,19 @@
 }
 - (void)setTableFooterView:(UIView *)tableFooterView
 {
-    // 待实现
+    if (_tableFooterView != tableFooterView) {
+        [_tableFooterView removeFromSuperview];
+        _tableFooterView = tableFooterView;
+        [self _addContentSubview:_tableFooterView atBack:NO];
+    }
+    [self _ensureRowDataIsLoaded];
+    [_rowData tableFooterHeightDidChangeToHeight:_tableFooterView.bounds.size.height];
+    CGRect frame = CGRectZero;
+    if (_rowData) {
+        frame = [_rowData rectForTableFooterView];
+    }
+    [_tableFooterView setFrame:frame];
+    [self _updateContentSize];
 }
 
 - (UITableViewStyle)style

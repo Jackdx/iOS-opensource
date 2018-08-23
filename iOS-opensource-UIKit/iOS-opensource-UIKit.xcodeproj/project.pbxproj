@@ -31,6 +31,12 @@
 		BB5A451A2103625400C1D6C1 /* UIImagePickerController.h in Headers */ = {isa = PBXBuildFile; fileRef = BB5A45182103625400C1D6C1 /* UIImagePickerController.h */; };
 		BB5A451B2103625400C1D6C1 /* UIImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB5A45192103625400C1D6C1 /* UIImagePickerController.m */; };
 		BB8DB07421281AFF009924BD /* UIGestureRecognizerDelegatePrivate.h in Headers */ = {isa = PBXBuildFile; fileRef = BB8DB07321281AFF009924BD /* UIGestureRecognizerDelegatePrivate.h */; };
+		BBA0CBCC212D6E1B0048419A /* UINavigationItem.h in Headers */ = {isa = PBXBuildFile; fileRef = BBA0CBCA212D6E1B0048419A /* UINavigationItem.h */; };
+		BBA0CBCD212D6E1B0048419A /* UINavigationItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA0CBCB212D6E1B0048419A /* UINavigationItem.m */; };
+		BBA0CBD0212D6EE50048419A /* UINavigationBar.h in Headers */ = {isa = PBXBuildFile; fileRef = BBA0CBCE212D6EE50048419A /* UINavigationBar.h */; };
+		BBA0CBD1212D6EE50048419A /* UINavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA0CBCF212D6EE50048419A /* UINavigationBar.m */; };
+		BBA0CBD4212D8D010048419A /* UINavigationItemView.h in Headers */ = {isa = PBXBuildFile; fileRef = BBA0CBD2212D8D010048419A /* UINavigationItemView.h */; };
+		BBA0CBD5212D8D010048419A /* UINavigationItemView.m in Sources */ = {isa = PBXBuildFile; fileRef = BBA0CBD3212D8D010048419A /* UINavigationItemView.m */; };
 		BBCCA57B210387FD0040B531 /* UIViewController+pri.h in Headers */ = {isa = PBXBuildFile; fileRef = BBCCA579210387FD0040B531 /* UIViewController+pri.h */; };
 		BBCCA57C210387FD0040B531 /* UIViewController+pri.m in Sources */ = {isa = PBXBuildFile; fileRef = BBCCA57A210387FD0040B531 /* UIViewController+pri.m */; };
 		BBDDA43821213DE80086587E /* UIView.h in Headers */ = {isa = PBXBuildFile; fileRef = BBDDA43621213DE80086587E /* UIView.h */; };
@@ -73,6 +79,12 @@
 		BB5A45182103625400C1D6C1 /* UIImagePickerController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIImagePickerController.h; sourceTree = "<group>"; };
 		BB5A45192103625400C1D6C1 /* UIImagePickerController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UIImagePickerController.m; sourceTree = "<group>"; };
 		BB8DB07321281AFF009924BD /* UIGestureRecognizerDelegatePrivate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIGestureRecognizerDelegatePrivate.h; sourceTree = "<group>"; };
+		BBA0CBCA212D6E1B0048419A /* UINavigationItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UINavigationItem.h; sourceTree = "<group>"; };
+		BBA0CBCB212D6E1B0048419A /* UINavigationItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UINavigationItem.m; sourceTree = "<group>"; };
+		BBA0CBCE212D6EE50048419A /* UINavigationBar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UINavigationBar.h; sourceTree = "<group>"; };
+		BBA0CBCF212D6EE50048419A /* UINavigationBar.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UINavigationBar.m; sourceTree = "<group>"; };
+		BBA0CBD2212D8D010048419A /* UINavigationItemView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UINavigationItemView.h; sourceTree = "<group>"; };
+		BBA0CBD3212D8D010048419A /* UINavigationItemView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = UINavigationItemView.m; sourceTree = "<group>"; };
 		BBCCA579210387FD0040B531 /* UIViewController+pri.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIViewController+pri.h"; sourceTree = "<group>"; };
 		BBCCA57A210387FD0040B531 /* UIViewController+pri.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+pri.m"; sourceTree = "<group>"; };
 		BBDDA43621213DE80086587E /* UIView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UIView.h; sourceTree = "<group>"; };
@@ -154,6 +166,10 @@
 				BBDDA43B21214F5C0086587E /* UITableViewHeaderFooterView.m */,
 				BBDDDA862121A35C003C2B9E /* UITableViewRowAction.h */,
 				BBDDDA872121A35C003C2B9E /* UITableViewRowAction.m */,
+				BBA0CBCA212D6E1B0048419A /* UINavigationItem.h */,
+				BBA0CBCB212D6E1B0048419A /* UINavigationItem.m */,
+				BBA0CBCE212D6EE50048419A /* UINavigationBar.h */,
+				BBA0CBCF212D6EE50048419A /* UINavigationBar.m */,
 			);
 			path = "Public Class";
 			sourceTree = "<group>";
@@ -178,6 +194,8 @@
 				BB8DB07321281AFF009924BD /* UIGestureRecognizerDelegatePrivate.h */,
 				BB45DA01212A56E800761FBB /* UIScrollView+pri.h */,
 				BB45DA02212A56E800761FBB /* UIScrollView+pri.m */,
+				BBA0CBD2212D8D010048419A /* UINavigationItemView.h */,
+				BBA0CBD3212D8D010048419A /* UINavigationItemView.m */,
 			);
 			path = "Private Class";
 			sourceTree = "<group>";
@@ -211,6 +229,8 @@
 				BB354784210355F500B97505 /* UITableViewSection.h in Headers */,
 				BB3E601B211B0E970073F367 /* UIViewController.h in Headers */,
 				BB5A451621035CB100C1D6C1 /* UITableView.h in Headers */,
+				BBA0CBD0212D6EE50048419A /* UINavigationBar.h in Headers */,
+				BBA0CBD4212D8D010048419A /* UINavigationItemView.h in Headers */,
 				BB0DDC44211D2C92002C83BB /* UITableViewController.h in Headers */,
 				BB390AE721244DAF00983969 /* UIAlertControllerStackManager.h in Headers */,
 				BBDDDA94212269F2003C2B9E /* UIColor+dx.h in Headers */,
@@ -223,6 +243,7 @@
 				BBDDA43C21214F5C0086587E /* UITableViewHeaderFooterView.h in Headers */,
 				BB5A451A2103625400C1D6C1 /* UIImagePickerController.h in Headers */,
 				BB35474C2103385C00B97505 /* iOS_opensource_UIKit.h in Headers */,
+				BBA0CBCC212D6E1B0048419A /* UINavigationItem.h in Headers */,
 				BB0DDC40211D2A16002C83BB /* UICollectionViewData.h in Headers */,
 				BB45DA03212A56E800761FBB /* UIScrollView+pri.h in Headers */,
 			);
@@ -300,6 +321,8 @@
 				BB0DDC49211D3899002C83BB /* _UIFilteredDataSource.m in Sources */,
 				BB0DDC45211D2C92002C83BB /* UITableViewController.m in Sources */,
 				BB0DDC3D211D2909002C83BB /* UICollectionView.m in Sources */,
+				BBA0CBCD212D6E1B0048419A /* UINavigationItem.m in Sources */,
+				BBA0CBD5212D8D010048419A /* UINavigationItemView.m in Sources */,
 				BBDDA43D21214F5C0086587E /* UITableViewHeaderFooterView.m in Sources */,
 				BB390AE821244DAF00983969 /* UIAlertControllerStackManager.m in Sources */,
 				BBDDDA8D2121AA5A003C2B9E /* _UITableViewCellActionButton.m in Sources */,
@@ -313,6 +336,7 @@
 				BBDDA43921213DE80086587E /* UIView.m in Sources */,
 				BB5A451721035CB100C1D6C1 /* UITableView.m in Sources */,
 				BB5A451B2103625400C1D6C1 /* UIImagePickerController.m in Sources */,
+				BBA0CBD1212D6EE50048419A /* UINavigationBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
